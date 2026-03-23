@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>간헐적 단식 타이머</title>
+    <title>간헐적 단식 대시보드</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -14,199 +14,210 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 20px;
+            padding: 20px 16px 40px;
         }
         h1 {
-            font-size: 1.8rem;
-            margin-bottom: 8px;
+            font-size: 1.6rem;
+            margin-bottom: 4px;
             background: linear-gradient(90deg, #f7971e, #ffd200);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .subtitle { color: #aaa; margin-bottom: 32px; font-size: 0.95rem; }
+        .subtitle { color: #aaa; margin-bottom: 24px; font-size: 0.85rem; }
+
         .card {
             background: rgba(255,255,255,0.07);
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 32px;
+            border-radius: 16px;
+            padding: 24px;
             width: 100%;
-            max-width: 420px;
-            text-align: center;
+            max-width: 440px;
+            margin-bottom: 16px;
         }
-        .status-icon { font-size: 4rem; margin-bottom: 16px; }
-        .status-label {
-            font-size: 1.1rem;
+        .card-title {
+            font-size: 0.95rem;
             font-weight: 600;
-            margin-bottom: 4px;
-        }
-        .status-label.fasting { color: #ff6b6b; }
-        .status-label.eating { color: #51cf66; }
-
-        .countdown {
-            font-size: 3.2rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            margin: 16px 0;
-            font-variant-numeric: tabular-nums;
-        }
-        .countdown-label { color: #aaa; font-size: 0.85rem; margin-bottom: 24px; }
-
-        .progress-container {
-            width: 100%;
-            height: 8px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 4px;
-            margin-bottom: 24px;
-            overflow: hidden;
-        }
-        .progress-bar {
-            height: 100%;
-            border-radius: 4px;
-            transition: width 1s linear;
-        }
-        .progress-bar.fasting { background: linear-gradient(90deg, #ff6b6b, #ee5a24); }
-        .progress-bar.eating { background: linear-gradient(90deg, #51cf66, #20bf6b); }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 24px;
-        }
-        .info-box {
-            background: rgba(255,255,255,0.05);
-            border-radius: 12px;
-            padding: 14px 10px;
-        }
-        .info-box .label { font-size: 0.75rem; color: #aaa; margin-bottom: 4px; }
-        .info-box .value { font-size: 1.05rem; font-weight: 600; }
-
-        .meal-time-setting {
-            margin-top: 16px;
+            margin-bottom: 14px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 10px;
+            gap: 6px;
         }
-        .meal-time-setting label { font-size: 0.85rem; color: #aaa; }
-        .meal-time-setting input[type="time"] {
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 8px;
-            color: #fff;
-            padding: 6px 12px;
-            font-size: 1rem;
-            cursor: pointer;
+
+        /* Timer Card */
+        .timer-card { text-align: center; }
+        .status-icon { font-size: 3rem; margin-bottom: 10px; }
+        .status-label { font-size: 1rem; font-weight: 600; margin-bottom: 2px; }
+        .status-label.fasting { color: #ff6b6b; }
+        .status-label.eating { color: #51cf66; }
+        .countdown {
+            font-size: 2.8rem; font-weight: 700; letter-spacing: 2px;
+            margin: 10px 0; font-variant-numeric: tabular-nums;
         }
+        .countdown-label { color: #aaa; font-size: 0.8rem; margin-bottom: 16px; }
+        .progress-container {
+            width: 100%; height: 6px; background: rgba(255,255,255,0.1);
+            border-radius: 3px; margin-bottom: 16px; overflow: hidden;
+        }
+        .progress-bar { height: 100%; border-radius: 3px; transition: width 1s linear; }
+        .progress-bar.fasting { background: linear-gradient(90deg, #ff6b6b, #ee5a24); }
+        .progress-bar.eating { background: linear-gradient(90deg, #51cf66, #20bf6b); }
+        .info-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+        }
+        .info-box {
+            background: rgba(255,255,255,0.05); border-radius: 10px; padding: 10px 8px;
+        }
+        .info-box .label { font-size: 0.7rem; color: #aaa; margin-bottom: 2px; }
+        .info-box .value { font-size: 0.95rem; font-weight: 600; }
+        .meal-time-setting {
+            margin-top: 12px; display: flex; align-items: center;
+            justify-content: center; gap: 8px;
+        }
+        .meal-time-setting label { font-size: 0.8rem; color: #aaa; }
+        .meal-time-setting input[type="time"],
         .meal-time-setting select {
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 8px;
-            color: #fff;
-            padding: 6px 12px;
-            font-size: 0.9rem;
-            cursor: pointer;
+            background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px; color: #fff; padding: 5px 10px; font-size: 0.9rem;
         }
         .meal-time-setting select option { background: #302b63; }
 
-        .tips {
-            margin-top: 20px;
-            padding: 14px;
-            background: rgba(255,255,255,0.04);
-            border-radius: 12px;
-            text-align: left;
+        /* Menu Card */
+        .menu-price {
+            display: inline-block; background: rgba(255,210,0,0.15); color: #ffd200;
+            padding: 2px 8px; border-radius: 6px; font-size: 0.75rem; margin-bottom: 8px;
         }
-        .tips .tip-title { font-size: 0.8rem; color: #ffd200; margin-bottom: 6px; }
-        .tips .tip-text { font-size: 0.8rem; color: #ccc; line-height: 1.5; }
-
-        .now-time {
-            color: #888;
-            font-size: 0.8rem;
-            margin-top: 16px;
-        }
-
-        .menu-card {
-            background: rgba(255,255,255,0.07);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 24px;
-            width: 100%;
-            max-width: 420px;
-            margin-top: 20px;
-        }
-        .menu-title {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: #ffd200;
-            margin-bottom: 12px;
-        }
-        .menu-items {
-            list-style: none;
-            padding: 0;
-        }
+        .menu-items { list-style: none; padding: 0; }
         .menu-items li {
-            font-size: 0.85rem;
-            color: #ddd;
-            padding: 5px 0;
+            font-size: 0.85rem; color: #ddd; padding: 4px 0;
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         .menu-items li:last-child { border-bottom: none; }
-        .menu-items li .allergen {
-            color: #888;
-            font-size: 0.75rem;
+        .menu-items .allergen { color: #888; font-size: 0.7rem; }
+        .menu-empty { color: #666; font-size: 0.85rem; font-style: italic; }
+        .calorie-summary {
+            margin-top: 12px; padding: 10px; background: rgba(255,255,255,0.04);
+            border-radius: 10px; font-size: 0.82rem;
         }
-        .menu-price {
-            display: inline-block;
-            background: rgba(255,210,0,0.15);
-            color: #ffd200;
-            padding: 2px 8px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            margin-bottom: 8px;
+        .calorie-summary .cal-row {
+            display: flex; justify-content: space-between; padding: 3px 0;
         }
-        .menu-empty {
-            color: #666;
-            font-size: 0.85rem;
-            font-style: italic;
+        .calorie-summary .cal-label { color: #aaa; }
+        .calorie-summary .cal-val { color: #ffd200; font-weight: 600; }
+        .calorie-summary .cal-total {
+            border-top: 1px solid rgba(255,255,255,0.1); margin-top: 6px; padding-top: 6px;
+        }
+        .supplement-row {
+            display: flex; align-items: center; gap: 8px; font-size: 0.82rem;
+            color: #ddd; margin-bottom: 2px;
+        }
+        .supplement-label { display: flex; align-items: center; gap: 6px; }
+
+        /* Water Card */
+        .water-grid {
+            display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 10px;
+        }
+        .water-btn {
+            width: 42px; height: 42px; border-radius: 50%;
+            border: 2px solid rgba(100,180,255,0.3); background: rgba(100,180,255,0.05);
+            color: #64b4ff; font-size: 1.2rem; cursor: pointer; transition: all 0.2s;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .water-btn.filled {
+            background: rgba(100,180,255,0.25); border-color: #64b4ff;
+        }
+        .water-btn:hover { border-color: #64b4ff; }
+        .water-total { font-size: 0.85rem; color: #aaa; }
+        .water-total span { color: #64b4ff; font-weight: 600; }
+
+        /* Checklist */
+        .checklist label {
+            display: flex; align-items: center; gap: 8px; padding: 6px 0;
+            font-size: 0.85rem; color: #ddd; cursor: pointer;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        .checklist label:last-child { border-bottom: none; }
+        .checklist input[type="checkbox"] {
+            width: 18px; height: 18px; accent-color: #51cf66; cursor: pointer;
+        }
+        .checklist .checked-label { color: #666; text-decoration: line-through; }
+
+        /* Weight & Running */
+        .input-row {
+            display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
+        }
+        .input-row label { font-size: 0.82rem; color: #aaa; white-space: nowrap; }
+        .input-row input[type="number"] {
+            background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px; color: #fff; padding: 6px 10px; font-size: 0.95rem;
+            width: 90px; text-align: center;
+        }
+        .input-row .unit { font-size: 0.8rem; color: #888; }
+        .save-btn {
+            background: rgba(81,207,102,0.2); border: 1px solid rgba(81,207,102,0.4);
+            color: #51cf66; padding: 6px 16px; border-radius: 8px; font-size: 0.82rem;
+            cursor: pointer; transition: all 0.2s;
+        }
+        .save-btn:hover { background: rgba(81,207,102,0.35); }
+
+        .trend-chart {
+            margin-top: 12px; padding: 10px; background: rgba(255,255,255,0.03);
+            border-radius: 10px;
+        }
+        .trend-row {
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 0.78rem; padding: 3px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+        }
+        .trend-row:last-child { border-bottom: none; }
+        .trend-date { color: #888; width: 70px; }
+        .trend-weight { color: #ffd200; font-weight: 600; width: 55px; text-align: right; }
+        .trend-run { color: #64b4ff; width: 50px; text-align: right; }
+        .trend-diff { width: 60px; text-align: right; font-size: 0.75rem; }
+        .trend-diff.down { color: #51cf66; }
+        .trend-diff.up { color: #ff6b6b; }
+        .trend-header { color: #666; font-size: 0.7rem; font-weight: 600; }
+        .trend-bar-bg {
+            flex: 1; height: 4px; background: rgba(255,255,255,0.06);
+            border-radius: 2px; margin: 0 8px; overflow: hidden;
+        }
+        .trend-bar-fill {
+            height: 100%; border-radius: 2px; background: linear-gradient(90deg, #51cf66, #ffd200);
+        }
+
+        .now-time { color: #888; font-size: 0.75rem; margin-top: 8px; }
+
+        /* Responsive */
+        @media (max-width: 460px) {
+            body { padding: 12px 10px 30px; }
+            .card { padding: 18px 14px; }
+            .countdown { font-size: 2.2rem; }
         }
     </style>
 </head>
 <body>
-    <h1>간헐적 단식 타이머</h1>
-    <p class="subtitle">OMAD (One Meal A Day) - 23:1</p>
+    <h1>간헐적 단식 대시보드</h1>
+    <p class="subtitle">OMAD 23:1 | 목표: 106kg → 70kg</p>
 
-    <div class="card">
-        <div class="status-icon" id="statusIcon">🍽️</div>
+    <!-- Timer -->
+    <div class="card timer-card">
+        <div class="status-icon" id="statusIcon">⏳</div>
         <div class="status-label" id="statusLabel">로딩 중...</div>
         <div class="countdown" id="countdown">--:--:--</div>
         <div class="countdown-label" id="countdownLabel">다음 식사까지</div>
-
         <div class="progress-container">
             <div class="progress-bar" id="progressBar" style="width:0%"></div>
         </div>
-
         <div class="info-grid">
             <div class="info-box">
                 <div class="label">식사 시간</div>
                 <div class="value" id="mealTimeDisplay">08:00</div>
             </div>
             <div class="info-box">
-                <div class="label">식사 창</div>
-                <div class="value" id="windowDisplay">1시간</div>
-            </div>
-            <div class="info-box">
-                <div class="label">단식 시간</div>
-                <div class="value" id="fastingHours">23시간</div>
-            </div>
-            <div class="info-box">
-                <div class="label">오늘 단식 경과</div>
+                <div class="label">단식 경과</div>
                 <div class="value" id="elapsedDisplay">-</div>
             </div>
         </div>
-
         <div class="meal-time-setting">
             <label>식사 시각</label>
             <input type="time" id="mealTimeInput" value="08:00">
@@ -216,202 +227,221 @@
                 <option value="2">2h</option>
             </select>
         </div>
+    </div>
 
-        <div class="tips" id="tipsBox">
-            <div class="tip-title">💡 팁</div>
-            <div class="tip-text" id="tipText">단식 중에는 물, 블랙커피, 무가당 차는 OK!</div>
+    <!-- Menu + Calorie -->
+    <div class="card" id="menuCard">
+        <div class="card-title" id="menuTitle">🍚 내일 조식 (제2학생회관)</div>
+        <div id="menuContent"><span class="menu-empty">로딩 중...</span></div>
+        <div class="calorie-summary" id="calorieSummary" style="display:none">
+            <div class="cal-row">
+                <span class="cal-label">학식 추정 칼로리</span>
+                <span class="cal-val" id="cafeteriaCal">-</span>
+            </div>
+            <div class="cal-row">
+                <span class="cal-label">🥚 계란 추가 권장</span>
+                <span class="cal-val" id="eggSuggestion">-</span>
+            </div>
+            <div class="cal-row">
+                <span class="cal-label">🥩 삼겹살 추가 권장</span>
+                <span class="cal-val" id="meatSuggestion">-</span>
+            </div>
+            <div class="cal-row cal-total">
+                <span class="cal-label">목표 합계</span>
+                <span class="cal-val">~1,000 kcal</span>
+            </div>
         </div>
     </div>
 
-    <div class="menu-card" id="menuCard">
-        <div class="menu-title" id="menuTitle">🍚 오늘의 조식 (제2학생회관)</div>
-        <div id="menuContent"><span class="menu-empty">식단 로딩 중...</span></div>
+    <!-- Water -->
+    <div class="card">
+        <div class="card-title">💧 수분 섭취</div>
+        <div class="water-grid" id="waterGrid"></div>
+        <div class="water-total">오늘 <span id="waterTotal">0</span> / 2,000ml (250ml × 8잔)</div>
+    </div>
+
+    <!-- Checklist -->
+    <div class="card">
+        <div class="card-title">✅ 오늘의 체크리스트</div>
+        <div class="checklist" id="checklist"></div>
+    </div>
+
+    <!-- Weight & Running -->
+    <div class="card">
+        <div class="card-title">📊 체중 & 러닝 기록</div>
+        <div class="input-row">
+            <label>🧊 찬물샤워 후 체중</label>
+            <input type="number" id="weightInput" step="0.1" placeholder="00.0">
+            <span class="unit">kg</span>
+        </div>
+        <div class="input-row">
+            <label>🏃 러닝 거리</label>
+            <input type="number" id="runInput" step="0.1" placeholder="0.0">
+            <span class="unit">km</span>
+        </div>
+        <div class="input-row">
+            <button class="save-btn" onclick="saveRecord()">저장</button>
+            <span id="saveMsg" style="font-size:0.8rem;color:#51cf66"></span>
+        </div>
+        <div class="trend-chart" id="trendChart"></div>
     </div>
 
     <div class="now-time" id="nowTime"></div>
 
     <script>
-        const tips = {
-            fasting: [
-                "단식 중에는 물, 블랙커피, 무가당 차는 OK!",
-                "공복 12시간 이후부터 체지방 분해가 본격화됩니다.",
-                "16시간 이후 오토파지(세포 자가포식)가 활성화됩니다.",
-                "배고픔은 파도처럼 왔다 갑니다. 20분만 버텨보세요.",
-                "가벼운 산책이 공복감 해소에 도움이 됩니다.",
-                "소금물 한 잔이 전해질 보충에 좋습니다.",
-            ],
-            eating: [
-                "천천히 씹어서 드세요. 포만감이 더 오래 갑니다.",
-                "단백질 → 채소 → 탄수화물 순서로 드세요.",
-                "한 끼에 단백질 최소 30g 이상 섭취를 권장합니다.",
-                "과식하지 마세요. 배부름의 80%에서 멈추세요.",
-                "영양소 밀도가 높은 음식을 선택하세요.",
-            ]
-        };
+        // ==================== Storage Helpers ====================
+        function getTodayKey() {
+            const d = new Date();
+            return d.getFullYear() + '-' +
+                String(d.getMonth() + 1).padStart(2, '0') + '-' +
+                String(d.getDate()).padStart(2, '0');
+        }
 
+        function loadData(key, fallback) {
+            try { return JSON.parse(localStorage.getItem(key)) || fallback; }
+            catch { return fallback; }
+        }
+        function saveData(key, val) {
+            localStorage.setItem(key, JSON.stringify(val));
+        }
+
+        // ==================== Timer ====================
         const mealTimeInput = document.getElementById('mealTimeInput');
         const windowSelect = document.getElementById('windowSelect');
 
-        // 로컬스토리지에서 설정 로드
-        const saved = localStorage.getItem('fasting-settings');
-        if (saved) {
-            const s = JSON.parse(saved);
-            mealTimeInput.value = s.mealTime || '08:00';
-            windowSelect.value = s.window || '1';
-        }
+        const savedSettings = loadData('fasting-settings', {});
+        if (savedSettings.mealTime) mealTimeInput.value = savedSettings.mealTime;
+        if (savedSettings.window) windowSelect.value = savedSettings.window;
 
-        mealTimeInput.addEventListener('change', saveAndUpdate);
-        windowSelect.addEventListener('change', saveAndUpdate);
+        mealTimeInput.addEventListener('change', () => saveData('fasting-settings', { mealTime: mealTimeInput.value, window: windowSelect.value }));
+        windowSelect.addEventListener('change', () => saveData('fasting-settings', { mealTime: mealTimeInput.value, window: windowSelect.value }));
 
-        function saveAndUpdate() {
-            localStorage.setItem('fasting-settings', JSON.stringify({
-                mealTime: mealTimeInput.value,
-                window: windowSelect.value
-            }));
-        }
-
-        function getMealConfig() {
-            const [h, m] = mealTimeInput.value.split(':').map(Number);
-            const windowHours = parseInt(windowSelect.value);
-            return { mealHour: h, mealMin: m, windowHours };
-        }
-
-        function update() {
+        function updateTimer() {
             const now = new Date();
-            const { mealHour, mealMin, windowHours } = getMealConfig();
-            const fastingHoursVal = 24 - windowHours;
+            const [mh, mm] = mealTimeInput.value.split(':').map(Number);
+            const wh = parseInt(windowSelect.value);
+            const fh = 24 - wh;
 
-            // 식사 시작/종료 시각 (오늘 기준)
-            const mealStart = new Date(now);
-            mealStart.setHours(mealHour, mealMin, 0, 0);
-
-            const mealEnd = new Date(mealStart);
-            mealEnd.setHours(mealStart.getHours() + windowHours);
-
-            // 상태 판별
+            const mealStart = new Date(now); mealStart.setHours(mh, mm, 0, 0);
+            const mealEnd = new Date(mealStart); mealEnd.setHours(mh + wh);
             const isEating = now >= mealStart && now < mealEnd;
 
-            const statusIcon = document.getElementById('statusIcon');
-            const statusLabel = document.getElementById('statusLabel');
-            const countdown = document.getElementById('countdown');
-            const countdownLabel = document.getElementById('countdownLabel');
-            const progressBar = document.getElementById('progressBar');
-            const mealTimeDisplay = document.getElementById('mealTimeDisplay');
-            const windowDisplay = document.getElementById('windowDisplay');
-            const fastingHoursEl = document.getElementById('fastingHours');
-            const elapsedDisplay = document.getElementById('elapsedDisplay');
-            const tipText = document.getElementById('tipText');
-            const nowTimeEl = document.getElementById('nowTime');
+            const el = (id) => document.getElementById(id);
 
-            mealTimeDisplay.textContent = mealTimeInput.value;
-            windowDisplay.textContent = windowHours + '시간';
-            fastingHoursEl.textContent = fastingHoursVal + '시간';
+            el('mealTimeDisplay').textContent = mealTimeInput.value;
 
-            let diffMs, totalMs, elapsed;
-
+            let diffMs;
             if (isEating) {
-                // 식사 중
-                statusIcon.textContent = '🍽️';
-                statusLabel.textContent = '식사 시간';
-                statusLabel.className = 'status-label eating';
-                countdownLabel.textContent = '식사 창 종료까지';
-                progressBar.className = 'progress-bar eating';
-
+                el('statusIcon').textContent = '🍽️';
+                el('statusLabel').textContent = '식사 시간';
+                el('statusLabel').className = 'status-label eating';
+                el('countdownLabel').textContent = '식사 창 종료까지';
+                el('progressBar').className = 'progress-bar eating';
                 diffMs = mealEnd - now;
-                totalMs = windowHours * 3600000;
-                elapsed = totalMs - diffMs;
-                progressBar.style.width = ((elapsed / totalMs) * 100) + '%';
-
-                // 팁
-                const pool = tips.eating;
-                tipText.textContent = pool[Math.floor(now.getMinutes() / 10) % pool.length];
+                const total = wh * 3600000;
+                el('progressBar').style.width = (((total - diffMs) / total) * 100) + '%';
+                el('elapsedDisplay').textContent = '식사 중';
             } else {
-                // 단식 중
-                statusIcon.textContent = '⏳';
-                statusLabel.textContent = '단식 중';
-                statusLabel.className = 'status-label fasting';
-                countdownLabel.textContent = '다음 식사까지';
-                progressBar.className = 'progress-bar fasting';
+                el('statusIcon').textContent = '⏳';
+                el('statusLabel').textContent = '단식 중';
+                el('statusLabel').className = 'status-label fasting';
+                el('countdownLabel').textContent = '다음 식사까지';
+                el('progressBar').className = 'progress-bar fasting';
 
-                // 다음 식사 시작
                 let nextMeal = new Date(mealStart);
-                if (now >= mealEnd) {
-                    nextMeal.setDate(nextMeal.getDate() + 1);
-                }
+                if (now >= mealEnd) nextMeal.setDate(nextMeal.getDate() + 1);
                 diffMs = nextMeal - now;
 
-                // 단식 시작 = 이전 식사 종료
                 let fastStart = new Date(mealEnd);
-                if (now < mealStart) {
-                    fastStart.setDate(fastStart.getDate() - 1);
-                }
-                totalMs = fastingHoursVal * 3600000;
-                elapsed = now - fastStart;
-                if (elapsed < 0) elapsed = 0;
-                progressBar.style.width = Math.min((elapsed / totalMs) * 100, 100) + '%';
-
-                // 경과 시간 표시
+                if (now < mealStart) fastStart.setDate(fastStart.getDate() - 1);
+                const elapsed = Math.max(0, now - fastStart);
+                const total = fh * 3600000;
+                el('progressBar').style.width = Math.min((elapsed / total) * 100, 100) + '%';
                 const elH = Math.floor(elapsed / 3600000);
                 const elM = Math.floor((elapsed % 3600000) / 60000);
-                elapsedDisplay.textContent = elH + '시간 ' + elM + '분';
-
-                // 팁
-                const pool = tips.fasting;
-                tipText.textContent = pool[Math.floor(now.getMinutes() / 10) % pool.length];
+                el('elapsedDisplay').textContent = elH + '시간 ' + elM + '분';
             }
 
-            if (isEating) {
-                elapsedDisplay.textContent = '식사 중';
+            const h = Math.floor(diffMs / 3600000);
+            const m = Math.floor((diffMs % 3600000) / 60000);
+            const s = Math.floor((diffMs % 60000) / 1000);
+            el('countdown').textContent =
+                String(h).padStart(2, '0') + ':' + String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+            el('nowTime').textContent = '현재: ' + now.toLocaleTimeString('ko-KR');
+        }
+        updateTimer();
+        setInterval(updateTimer, 1000);
+
+        // ==================== Menu & Calories ====================
+        const CALORIE_DB = {
+            '밥': 300, '쌀밥': 300, '흑미밥': 300, '차조밥': 300, '작은밥': 150,
+            '죽': 200, '야채죽': 200,
+            '볶음밥': 400, '덮밥': 420, '비빔밥': 400, '카레라이스': 450,
+            '국': 60, '된장국': 60, '국물': 50, '찌개': 150, '육개장': 120,
+            '돈까스': 350, '고로케': 120, '튀김': 150, '만두': 200,
+            '김치': 15, '깍두기': 15, '단무지': 10, '배추김치': 15,
+            '우유': 130, '요쿠르트': 65, '씨리얼': 150,
+            '장조림': 80, '조림': 80, '볶음': 120, '샐러드': 80,
+            '계란': 80, '쌈': 20, '나물': 40, '김': 15,
+        };
+
+        function estimateCalories(items) {
+            let total = 0;
+            for (const item of items) {
+                if (item.startsWith('정식')) continue;
+                const name = item.replace(/\(.*?\)/g, '').trim();
+                let matched = false;
+                for (const [key, cal] of Object.entries(CALORIE_DB)) {
+                    if (name.includes(key)) { total += cal; matched = true; break; }
+                }
+                if (!matched) total += 100; // 기본값
             }
-
-            // 카운트다운 표시
-            const hours = Math.floor(diffMs / 3600000);
-            const mins = Math.floor((diffMs % 3600000) / 60000);
-            const secs = Math.floor((diffMs % 60000) / 1000);
-            countdown.textContent =
-                String(hours).padStart(2, '0') + ':' +
-                String(mins).padStart(2, '0') + ':' +
-                String(secs).padStart(2, '0');
-
-            // 현재 시각
-            nowTimeEl.textContent = '현재: ' + now.toLocaleTimeString('ko-KR');
+            return total;
         }
 
-        update();
-        setInterval(update, 1000);
-
-        // 식단 로드
         async function loadMenu() {
-            const menuContent = document.getElementById('menuContent');
-            const menuTitle = document.getElementById('menuTitle');
             try {
                 const resp = await fetch('menu.json');
-                if (!resp.ok) throw new Error('menu.json not found');
+                if (!resp.ok) throw new Error();
                 const data = await resp.json();
 
                 const now = new Date();
-                const todayKey = now.getFullYear() + '-' +
-                    String(now.getMonth() + 1).padStart(2, '0') + '-' +
-                    String(now.getDate()).padStart(2, '0');
+                const [mh] = mealTimeInput.value.split(':').map(Number);
 
-                const today = data[todayKey];
-                if (!today || !today.breakfast) {
-                    menuContent.innerHTML = '<span class="menu-empty">오늘은 조식 운영이 없습니다</span>';
+                // 식사 시간이 지났으면 내일 메뉴 표시
+                let targetDate = new Date(now);
+                if (now.getHours() >= mh + parseInt(windowSelect.value)) {
+                    targetDate.setDate(targetDate.getDate() + 1);
+                }
+
+                const key = targetDate.getFullYear() + '-' +
+                    String(targetDate.getMonth() + 1).padStart(2, '0') + '-' +
+                    String(targetDate.getDate()).padStart(2, '0');
+
+                const weekdays = ['일', '월', '화', '수', '목', '금', '토'];
+                const dayName = weekdays[targetDate.getDay()];
+                const isToday = key === getTodayKey();
+                const prefix = isToday ? '오늘' : '내일';
+
+                document.getElementById('menuTitle').textContent =
+                    `🍚 ${prefix}(${dayName}) 조식 - 제2학생회관`;
+
+                const menu = data[key];
+                const content = document.getElementById('menuContent');
+                const calSummary = document.getElementById('calorieSummary');
+
+                if (!menu || !menu.breakfast) {
+                    content.innerHTML = '<span class="menu-empty">조식 운영 없음 (주말/공휴일)</span>';
+                    calSummary.style.display = 'none';
                     return;
                 }
 
-                const items = today.breakfast;
+                const items = menu.breakfast;
                 let price = '';
                 const menuItems = [];
-
                 for (const item of items) {
-                    // 가격 추출
-                    const priceMatch = item.match(/정식\((\d+)\)/);
-                    if (priceMatch) {
-                        price = priceMatch[1] + '원';
-                        continue;
-                    }
-                    // 알레르기 정보 분리
+                    const pm = item.match(/정식\((\d+)\)/);
+                    if (pm) { price = pm[1] + '원'; continue; }
                     const clean = item.replace(/\(.*?included\)/g, '').trim();
                     const allergen = item.match(/\(.*?included\)/);
                     menuItems.push({ name: clean, allergen: allergen ? allergen[0] : '' });
@@ -424,15 +454,173 @@
                     html += `<li>${m.name}${m.allergen ? ' <span class="allergen">' + m.allergen + '</span>' : ''}</li>`;
                 }
                 html += '</ul>';
-                menuContent.innerHTML = html;
+                content.innerHTML = html;
 
-                const weekdays = ['월', '화', '수', '목', '금', '토', '일'];
-                menuTitle.textContent = `🍚 ${weekdays[now.getDay() === 0 ? 6 : now.getDay() - 1]}요일 조식 (제2학생회관)`;
-            } catch (e) {
-                menuContent.innerHTML = '<span class="menu-empty">식단 데이터를 불러올 수 없습니다</span>';
+                // Calorie calculation
+                const cafCal = estimateCalories(items);
+                const remaining = Math.max(0, 1000 - cafCal);
+                const eggs = Math.round(remaining / 80);
+                const meat = Math.round(remaining / 3.3); // 삼겹살 100g=330kcal
+
+                document.getElementById('cafeteriaCal').textContent = `~${cafCal} kcal`;
+                document.getElementById('eggSuggestion').textContent = eggs > 0 ? `${eggs}개 (~${eggs * 80}kcal)` : '불필요';
+                document.getElementById('meatSuggestion').textContent = meat > 0 ? `${meat}g (~${Math.round(meat * 3.3)}kcal)` : '불필요';
+                calSummary.style.display = 'block';
+
+            } catch {
+                document.getElementById('menuContent').innerHTML =
+                    '<span class="menu-empty">식단 데이터를 불러올 수 없습니다</span>';
             }
         }
         loadMenu();
+
+        // ==================== Water Tracker ====================
+        function initWater() {
+            const grid = document.getElementById('waterGrid');
+            const todayWater = loadData('water-' + getTodayKey(), 0);
+            grid.innerHTML = '';
+            for (let i = 0; i < 8; i++) {
+                const btn = document.createElement('button');
+                btn.className = 'water-btn' + (i < todayWater ? ' filled' : '');
+                btn.textContent = i < todayWater ? '💧' : '○';
+                btn.onclick = () => toggleWater(i);
+                grid.appendChild(btn);
+            }
+            document.getElementById('waterTotal').textContent =
+                (todayWater * 250).toLocaleString() + 'ml';
+        }
+        function toggleWater(idx) {
+            let count = loadData('water-' + getTodayKey(), 0);
+            count = (idx < count) ? idx : idx + 1;
+            saveData('water-' + getTodayKey(), count);
+            initWater();
+        }
+        initWater();
+
+        // ==================== Checklist ====================
+        const CHECKLIST_ITEMS = [
+            { id: 'vita1', label: '오브맘 비타민젤리 ① 멀티비타민' },
+            { id: 'vita2', label: '오브맘 비타민젤리 ② 비타민C' },
+            { id: 'vita3', label: '오브맘 비타민젤리 ③ 비타민D' },
+            { id: 'vita4', label: '오브맘 비타민젤리 ④ 아연' },
+            { id: 'mag', label: '마그네슘샷' },
+            { id: 'fat', label: '푸응 팻버닝 7Days' },
+            { id: 'shower', label: '찬물샤워 완료' },
+            { id: 'weigh', label: '몸무게 측정 완료' },
+        ];
+
+        function initChecklist() {
+            const container = document.getElementById('checklist');
+            const todayChecks = loadData('checks-' + getTodayKey(), {});
+            container.innerHTML = '';
+            for (const item of CHECKLIST_ITEMS) {
+                const checked = todayChecks[item.id] || false;
+                const label = document.createElement('label');
+                label.innerHTML = `
+                    <input type="checkbox" ${checked ? 'checked' : ''} onchange="toggleCheck('${item.id}', this.checked)">
+                    <span class="${checked ? 'checked-label' : ''}">${item.label}</span>
+                `;
+                container.appendChild(label);
+            }
+        }
+        function toggleCheck(id, val) {
+            const checks = loadData('checks-' + getTodayKey(), {});
+            checks[id] = val;
+            saveData('checks-' + getTodayKey(), checks);
+            initChecklist();
+        }
+        initChecklist();
+
+        // ==================== Weight & Running ====================
+        function saveRecord() {
+            const weight = parseFloat(document.getElementById('weightInput').value);
+            const run = parseFloat(document.getElementById('runInput').value);
+
+            if (!weight && !run) return;
+
+            const records = loadData('records', {});
+            const today = getTodayKey();
+            if (!records[today]) records[today] = {};
+            if (weight) records[today].weight = weight;
+            if (run) records[today].run = run;
+
+            saveData('records', records);
+            document.getElementById('saveMsg').textContent = '저장 완료!';
+            setTimeout(() => document.getElementById('saveMsg').textContent = '', 2000);
+
+            // 체크리스트의 '몸무게 측정' 자동 체크
+            if (weight) {
+                const checks = loadData('checks-' + getTodayKey(), {});
+                checks['weigh'] = true;
+                saveData('checks-' + getTodayKey(), checks);
+                initChecklist();
+            }
+
+            renderTrend();
+        }
+
+        function renderTrend() {
+            const records = loadData('records', {});
+            const keys = Object.keys(records).sort().slice(-14); // 최근 14일
+
+            if (keys.length === 0) {
+                document.getElementById('trendChart').innerHTML =
+                    '<span class="menu-empty">아직 기록이 없습니다</span>';
+                return;
+            }
+
+            // 오늘 데이터 로드
+            const todayRec = records[getTodayKey()];
+            if (todayRec) {
+                if (todayRec.weight) document.getElementById('weightInput').value = todayRec.weight;
+                if (todayRec.run) document.getElementById('runInput').value = todayRec.run;
+            }
+
+            const weights = keys.map(k => records[k].weight).filter(Boolean);
+            const minW = Math.min(...weights) - 1;
+            const maxW = Math.max(...weights) + 1;
+            const range = maxW - minW || 1;
+
+            let html = '<div class="trend-row"><span class="trend-header trend-date">날짜</span>' +
+                '<span class="trend-header" style="flex:1;text-align:center">경향</span>' +
+                '<span class="trend-header trend-weight">체중</span>' +
+                '<span class="trend-header trend-diff">변화</span>' +
+                '<span class="trend-header trend-run">러닝</span></div>';
+
+            for (let i = 0; i < keys.length; i++) {
+                const k = keys[i];
+                const r = records[k];
+                const w = r.weight;
+                const run = r.run;
+                const prevW = i > 0 ? records[keys[i - 1]].weight : null;
+                const diff = (w && prevW) ? (w - prevW).toFixed(1) : '';
+                const diffClass = diff ? (parseFloat(diff) <= 0 ? 'down' : 'up') : '';
+                const diffStr = diff ? (parseFloat(diff) <= 0 ? diff : '+' + diff) : '-';
+                const pct = w ? ((maxW - w) / range * 100) : 0;
+                const dateShort = k.slice(5); // MM-DD
+
+                html += `<div class="trend-row">
+                    <span class="trend-date">${dateShort}</span>
+                    <div class="trend-bar-bg"><div class="trend-bar-fill" style="width:${w ? (100 - pct) : 0}%"></div></div>
+                    <span class="trend-weight">${w ? w : '-'}</span>
+                    <span class="trend-diff ${diffClass}">${diffStr}</span>
+                    <span class="trend-run">${run ? run + 'km' : '-'}</span>
+                </div>`;
+            }
+
+            // 요약
+            if (weights.length >= 2) {
+                const totalLoss = (weights[0] - weights[weights.length - 1]).toFixed(1);
+                const totalRun = keys.reduce((sum, k) => sum + (records[k].run || 0), 0);
+                html += `<div style="margin-top:10px;font-size:0.78rem;color:#aaa;text-align:center">
+                    총 변화: <span style="color:${parseFloat(totalLoss) >= 0 ? '#51cf66' : '#ff6b6b'};font-weight:600">${parseFloat(totalLoss) >= 0 ? '-' : '+'}${Math.abs(totalLoss)}kg</span>
+                    &nbsp;|&nbsp; 총 러닝: <span style="color:#64b4ff;font-weight:600">${totalRun.toFixed(1)}km</span>
+                </div>`;
+            }
+
+            document.getElementById('trendChart').innerHTML = html;
+        }
+        renderTrend();
     </script>
 </body>
 </html>
