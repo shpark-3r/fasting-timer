@@ -1,25 +1,4 @@
 {
-  "2026-03-23": {
-    "date": "2026.03.23",
-    "breakfast": [
-      "정식(1000)",
-      "소고기야채죽(beef included)",
-      "메추리알장조림",
-      "우리쌀씨리얼",
-      "우유",
-      "깍두기"
-    ],
-    "lunch": [
-      "정식(4500)",
-      "안동찜닭덮밥(chicken included)",
-      "미역된장국",
-      "메밀전병",
-      "요쿠르트",
-      "배추김치"
-    ],
-    "dinner": null,
-    "weekday": 0
-  },
   "2026-03-24": {
     "date": "2026.03.24",
     "breakfast": [
@@ -105,5 +84,12 @@
     "lunch": null,
     "dinner": null,
     "weekday": 6
+  },
+  "2026-03-30": {
+    "date": "2026.03.30",
+    "breakfast": null,
+    "lunch": null,
+    "dinner": null,
+    "weekday": 0
   }
 }
