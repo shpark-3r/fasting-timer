@@ -126,6 +126,52 @@
             font-size: 0.8rem;
             margin-top: 16px;
         }
+
+        .menu-card {
+            background: rgba(255,255,255,0.07);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 24px;
+            width: 100%;
+            max-width: 420px;
+            margin-top: 20px;
+        }
+        .menu-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #ffd200;
+            margin-bottom: 12px;
+        }
+        .menu-items {
+            list-style: none;
+            padding: 0;
+        }
+        .menu-items li {
+            font-size: 0.85rem;
+            color: #ddd;
+            padding: 5px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .menu-items li:last-child { border-bottom: none; }
+        .menu-items li .allergen {
+            color: #888;
+            font-size: 0.75rem;
+        }
+        .menu-price {
+            display: inline-block;
+            background: rgba(255,210,0,0.15);
+            color: #ffd200;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            margin-bottom: 8px;
+        }
+        .menu-empty {
+            color: #666;
+            font-size: 0.85rem;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
@@ -175,6 +221,11 @@
             <div class="tip-title">💡 팁</div>
             <div class="tip-text" id="tipText">단식 중에는 물, 블랙커피, 무가당 차는 OK!</div>
         </div>
+    </div>
+
+    <div class="menu-card" id="menuCard">
+        <div class="menu-title" id="menuTitle">🍚 오늘의 조식 (제2학생회관)</div>
+        <div id="menuContent"><span class="menu-empty">식단 로딩 중...</span></div>
     </div>
 
     <div class="now-time" id="nowTime"></div>
@@ -328,6 +379,60 @@
 
         update();
         setInterval(update, 1000);
+
+        // 식단 로드
+        async function loadMenu() {
+            const menuContent = document.getElementById('menuContent');
+            const menuTitle = document.getElementById('menuTitle');
+            try {
+                const resp = await fetch('menu.json');
+                if (!resp.ok) throw new Error('menu.json not found');
+                const data = await resp.json();
+
+                const now = new Date();
+                const todayKey = now.getFullYear() + '-' +
+                    String(now.getMonth() + 1).padStart(2, '0') + '-' +
+                    String(now.getDate()).padStart(2, '0');
+
+                const today = data[todayKey];
+                if (!today || !today.breakfast) {
+                    menuContent.innerHTML = '<span class="menu-empty">오늘은 조식 운영이 없습니다</span>';
+                    return;
+                }
+
+                const items = today.breakfast;
+                let price = '';
+                const menuItems = [];
+
+                for (const item of items) {
+                    // 가격 추출
+                    const priceMatch = item.match(/정식\((\d+)\)/);
+                    if (priceMatch) {
+                        price = priceMatch[1] + '원';
+                        continue;
+                    }
+                    // 알레르기 정보 분리
+                    const clean = item.replace(/\(.*?included\)/g, '').trim();
+                    const allergen = item.match(/\(.*?included\)/);
+                    menuItems.push({ name: clean, allergen: allergen ? allergen[0] : '' });
+                }
+
+                let html = '';
+                if (price) html += `<span class="menu-price">${price}</span>`;
+                html += '<ul class="menu-items">';
+                for (const m of menuItems) {
+                    html += `<li>${m.name}${m.allergen ? ' <span class="allergen">' + m.allergen + '</span>' : ''}</li>`;
+                }
+                html += '</ul>';
+                menuContent.innerHTML = html;
+
+                const weekdays = ['월', '화', '수', '목', '금', '토', '일'];
+                menuTitle.textContent = `🍚 ${weekdays[now.getDay() === 0 ? 6 : now.getDay() - 1]}요일 조식 (제2학생회관)`;
+            } catch (e) {
+                menuContent.innerHTML = '<span class="menu-empty">식단 데이터를 불러올 수 없습니다</span>';
+            }
+        }
+        loadMenu();
     </script>
 </body>
 </html>
