@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>간헐적 단식 타이머</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            background: linear-gradient(90deg, #f7971e, #ffd200);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .subtitle { color: #aaa; margin-bottom: 32px; font-size: 0.95rem; }
+        .card {
+            background: rgba(255,255,255,0.07);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 32px;
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+        }
+        .status-icon { font-size: 4rem; margin-bottom: 16px; }
+        .status-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .status-label.fasting { color: #ff6b6b; }
+        .status-label.eating { color: #51cf66; }
+
+        .countdown {
+            font-size: 3.2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin: 16px 0;
+            font-variant-numeric: tabular-nums;
+        }
+        .countdown-label { color: #aaa; font-size: 0.85rem; margin-bottom: 24px; }
+
+        .progress-container {
+            width: 100%;
+            height: 8px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 4px;
+            margin-bottom: 24px;
+            overflow: hidden;
+        }
+        .progress-bar {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 1s linear;
+        }
+        .progress-bar.fasting { background: linear-gradient(90deg, #ff6b6b, #ee5a24); }
+        .progress-bar.eating { background: linear-gradient(90deg, #51cf66, #20bf6b); }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        .info-box {
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 14px 10px;
+        }
+        .info-box .label { font-size: 0.75rem; color: #aaa; margin-bottom: 4px; }
+        .info-box .value { font-size: 1.05rem; font-weight: 600; }
+
+        .meal-time-setting {
+            margin-top: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .meal-time-setting label { font-size: 0.85rem; color: #aaa; }
+        .meal-time-setting input[type="time"] {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            color: #fff;
+            padding: 6px 12px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        .meal-time-setting select {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            color: #fff;
+            padding: 6px 12px;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+        .meal-time-setting select option { background: #302b63; }
+
+        .tips {
+            margin-top: 20px;
+            padding: 14px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 12px;
+            text-align: left;
+        }
+        .tips .tip-title { font-size: 0.8rem; color: #ffd200; margin-bottom: 6px; }
+        .tips .tip-text { font-size: 0.8rem; color: #ccc; line-height: 1.5; }
+
+        .now-time {
+            color: #888;
+            font-size: 0.8rem;
+            margin-top: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>간헐적 단식 타이머</h1>
+    <p class="subtitle">OMAD (One Meal A Day) - 23:1</p>
+
+    <div class="card">
+        <div class="status-icon" id="statusIcon">🍽️</div>
+        <div class="status-label" id="statusLabel">로딩 중...</div>
+        <div class="countdown" id="countdown">--:--:--</div>
+        <div class="countdown-label" id="countdownLabel">다음 식사까지</div>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar" style="width:0%"></div>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-box">
+                <div class="label">식사 시간</div>
+                <div class="value" id="mealTimeDisplay">08:00</div>
+            </div>
+            <div class="info-box">
+                <div class="label">식사 창</div>
+                <div class="value" id="windowDisplay">1시간</div>
+            </div>
+            <div class="info-box">
+                <div class="label">단식 시간</div>
+                <div class="value" id="fastingHours">23시간</div>
+            </div>
+            <div class="info-box">
+                <div class="label">오늘 단식 경과</div>
+                <div class="value" id="elapsedDisplay">-</div>
+            </div>
+        </div>
+
+        <div class="meal-time-setting">
+            <label>식사 시각</label>
+            <input type="time" id="mealTimeInput" value="08:00">
+            <label>창</label>
+            <select id="windowSelect">
+                <option value="1">1h</option>
+                <option value="2">2h</option>
+            </select>
+        </div>
+
+        <div class="tips" id="tipsBox">
+            <div class="tip-title">💡 팁</div>
+            <div class="tip-text" id="tipText">단식 중에는 물, 블랙커피, 무가당 차는 OK!</div>
+        </div>
+    </div>
+
+    <div class="now-time" id="nowTime"></div>
+
+    <script>
+        const tips = {
+            fasting: [
+                "단식 중에는 물, 블랙커피, 무가당 차는 OK!",
+                "공복 12시간 이후부터 체지방 분해가 본격화됩니다.",
+                "16시간 이후 오토파지(세포 자가포식)가 활성화됩니다.",
+                "배고픔은 파도처럼 왔다 갑니다. 20분만 버텨보세요.",
+                "가벼운 산책이 공복감 해소에 도움이 됩니다.",
+                "소금물 한 잔이 전해질 보충에 좋습니다.",
+            ],
+            eating: [
+                "천천히 씹어서 드세요. 포만감이 더 오래 갑니다.",
+                "단백질 → 채소 → 탄수화물 순서로 드세요.",
+                "한 끼에 단백질 최소 30g 이상 섭취를 권장합니다.",
+                "과식하지 마세요. 배부름의 80%에서 멈추세요.",
+                "영양소 밀도가 높은 음식을 선택하세요.",
+            ]
+        };
+
+        const mealTimeInput = document.getElementById('mealTimeInput');
+        const windowSelect = document.getElementById('windowSelect');
+
+        // 로컬스토리지에서 설정 로드
+        const saved = localStorage.getItem('fasting-settings');
+        if (saved) {
+            const s = JSON.parse(saved);
+            mealTimeInput.value = s.mealTime || '08:00';
+            windowSelect.value = s.window || '1';
+        }
+
+        mealTimeInput.addEventListener('change', saveAndUpdate);
+        windowSelect.addEventListener('change', saveAndUpdate);
+
+        function saveAndUpdate() {
+            localStorage.setItem('fasting-settings', JSON.stringify({
+                mealTime: mealTimeInput.value,
+                window: windowSelect.value
+            }));
+        }
+
+        function getMealConfig() {
+            const [h, m] = mealTimeInput.value.split(':').map(Number);
+            const windowHours = parseInt(windowSelect.value);
+            return { mealHour: h, mealMin: m, windowHours };
+        }
+
+        function update() {
+            const now = new Date();
+            const { mealHour, mealMin, windowHours } = getMealConfig();
+            const fastingHoursVal = 24 - windowHours;
+
+            // 식사 시작/종료 시각 (오늘 기준)
+            const mealStart = new Date(now);
+            mealStart.setHours(mealHour, mealMin, 0, 0);
+
+            const mealEnd = new Date(mealStart);
+            mealEnd.setHours(mealStart.getHours() + windowHours);
+
+            // 상태 판별
+            const isEating = now >= mealStart && now < mealEnd;
+
+            const statusIcon = document.getElementById('statusIcon');
+            const statusLabel = document.getElementById('statusLabel');
+            const countdown = document.getElementById('countdown');
+            const countdownLabel = document.getElementById('countdownLabel');
+            const progressBar = document.getElementById('progressBar');
+            const mealTimeDisplay = document.getElementById('mealTimeDisplay');
+            const windowDisplay = document.getElementById('windowDisplay');
+            const fastingHoursEl = document.getElementById('fastingHours');
+            const elapsedDisplay = document.getElementById('elapsedDisplay');
+            const tipText = document.getElementById('tipText');
+            const nowTimeEl = document.getElementById('nowTime');
+
+            mealTimeDisplay.textContent = mealTimeInput.value;
+            windowDisplay.textContent = windowHours + '시간';
+            fastingHoursEl.textContent = fastingHoursVal + '시간';
+
+            let diffMs, totalMs, elapsed;
+
+            if (isEating) {
+                // 식사 중
+                statusIcon.textContent = '🍽️';
+                statusLabel.textContent = '식사 시간';
+                statusLabel.className = 'status-label eating';
+                countdownLabel.textContent = '식사 창 종료까지';
+                progressBar.className = 'progress-bar eating';
+
+                diffMs = mealEnd - now;
+                totalMs = windowHours * 3600000;
+                elapsed = totalMs - diffMs;
+                progressBar.style.width = ((elapsed / totalMs) * 100) + '%';
+
+                // 팁
+                const pool = tips.eating;
+                tipText.textContent = pool[Math.floor(now.getMinutes() / 10) % pool.length];
+            } else {
+                // 단식 중
+                statusIcon.textContent = '⏳';
+                statusLabel.textContent = '단식 중';
+                statusLabel.className = 'status-label fasting';
+                countdownLabel.textContent = '다음 식사까지';
+                progressBar.className = 'progress-bar fasting';
+
+                // 다음 식사 시작
+                let nextMeal = new Date(mealStart);
+                if (now >= mealEnd) {
+                    nextMeal.setDate(nextMeal.getDate() + 1);
+                }
+                diffMs = nextMeal - now;
+
+                // 단식 시작 = 이전 식사 종료
+                let fastStart = new Date(mealEnd);
+                if (now < mealStart) {
+                    fastStart.setDate(fastStart.getDate() - 1);
+                }
+                totalMs = fastingHoursVal * 3600000;
+                elapsed = now - fastStart;
+                if (elapsed < 0) elapsed = 0;
+                progressBar.style.width = Math.min((elapsed / totalMs) * 100, 100) + '%';
+
+                // 경과 시간 표시
+                const elH = Math.floor(elapsed / 3600000);
+                const elM = Math.floor((elapsed % 3600000) / 60000);
+                elapsedDisplay.textContent = elH + '시간 ' + elM + '분';
+
+                // 팁
+                const pool = tips.fasting;
+                tipText.textContent = pool[Math.floor(now.getMinutes() / 10) % pool.length];
+            }
+
+            if (isEating) {
+                elapsedDisplay.textContent = '식사 중';
+            }
+
+            // 카운트다운 표시
+            const hours = Math.floor(diffMs / 3600000);
+            const mins = Math.floor((diffMs % 3600000) / 60000);
+            const secs = Math.floor((diffMs % 60000) / 1000);
+            countdown.textContent =
+                String(hours).padStart(2, '0') + ':' +
+                String(mins).padStart(2, '0') + ':' +
+                String(secs).padStart(2, '0');
+
+            // 현재 시각
+            nowTimeEl.textContent = '현재: ' + now.toLocaleTimeString('ko-KR');
+        }
+
+        update();
+        setInterval(update, 1000);
+    </script>
+</body>
+</html>
