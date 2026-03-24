@@ -1,20 +1,4 @@
 {
-  "2026-03-24": {
-    "date": "2026.03.24",
-    "breakfast": [
-      "정식(1000)",
-      "닭갈비볶음밥(chicken included)",
-      "맑은우동국물",
-      "감자고로케",
-      "단무지"
-    ],
-    "lunch": [
-      "정식(5500)",
-      "고구마치즈돈까스(pork included)"
-    ],
-    "dinner": null,
-    "weekday": 1
-  },
   "2026-03-25": {
     "date": "2026.03.25",
     "breakfast": [
@@ -91,5 +75,12 @@
     "lunch": null,
     "dinner": null,
     "weekday": 0
+  },
+  "2026-03-31": {
+    "date": "2026.03.31",
+    "breakfast": null,
+    "lunch": null,
+    "dinner": null,
+    "weekday": 1
   }
 }
