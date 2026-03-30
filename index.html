@@ -904,6 +904,8 @@
             if (!weight && !run) return;
 
             const dateKey = getSelectedDate();
+            window._saving = true;
+
             const existing = await dbGet(`records/${dateKey}`) || {};
             if (weight) existing.weight = weight;
             if (run) existing.run = run;
@@ -916,8 +918,11 @@
                 await dbSet(`checks/${dateKey}`, checks);
             }
 
-            document.getElementById('saveMsg').textContent = '저장 완료!';
-            setTimeout(() => document.getElementById('saveMsg').textContent = '', 2000);
+            document.getElementById('saveMsg').textContent = `${dateKey} 저장 완료!`;
+            setTimeout(() => {
+                document.getElementById('saveMsg').textContent = '';
+                window._saving = false;
+            }, 2000);
         };
 
         function renderTrend(records) {
@@ -930,12 +935,12 @@
                 return;
             }
 
-            // 선택된 날짜의 데이터를 input에 반영
-            const selDate = getSelectedDate();
-            const selRec = records[selDate];
-            if (selRec) {
-                if (selRec.weight) document.getElementById('weightInput').value = selRec.weight;
-                if (selRec.run) document.getElementById('runInput').value = selRec.run;
+            // 선택된 날짜의 데이터를 input에 반영 (저장 중이 아닐 때만)
+            if (!window._saving) {
+                const selDate = getSelectedDate();
+                const selRec = records[selDate];
+                document.getElementById('weightInput').value = selRec?.weight || '';
+                document.getElementById('runInput').value = selRec?.run || '';
             }
 
             const weights = keys.map(k => records[k].weight).filter(Boolean);
