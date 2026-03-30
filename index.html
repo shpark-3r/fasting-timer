@@ -338,10 +338,10 @@
     <!-- Workout Detail -->
     <div class="card">
         <div class="card-title">💪 근력운동 가이드</div>
-        <div class="workout-tabs">
-            <button class="workout-tab active" onclick="showWorkout('a',this)">A 상체</button>
-            <button class="workout-tab" onclick="showWorkout('b',this)">B 하체</button>
-            <button class="workout-tab" onclick="showWorkout('c',this)">C 전신</button>
+        <div class="workout-tabs" id="workoutTabs">
+            <button class="workout-tab active" data-workout="a">A 상체</button>
+            <button class="workout-tab" data-workout="b">B 하체</button>
+            <button class="workout-tab" data-workout="c">C 전신</button>
         </div>
 
         <div class="workout-card active" id="workout-a">
@@ -447,10 +447,10 @@
     <div class="card">
         <div class="card-title">📊 체중 & 러닝 기록</div>
         <div class="date-nav">
-            <button onclick="shiftDate(-1)">◀</button>
+            <button id="datePrev">◀</button>
             <input type="date" id="recordDate">
-            <button onclick="shiftDate(1)">▶</button>
-            <button class="today-btn" onclick="goToday()">오늘</button>
+            <button id="dateNext">▶</button>
+            <button class="today-btn" id="dateToday">오늘</button>
         </div>
         <div class="input-row">
             <label>🧊 체중</label>
@@ -463,7 +463,7 @@
             <span class="unit">km</span>
         </div>
         <div class="input-row">
-            <button class="save-btn" onclick="saveRecord()">저장</button>
+            <button class="save-btn" id="saveBtn">저장</button>
             <span id="saveMsg" style="font-size:0.8rem;color:#51cf66"></span>
         </div>
         <div class="trend-chart" id="trendChart"></div>
@@ -845,26 +845,24 @@
         }
 
         // ==================== Workout Tabs ====================
-        window.showWorkout = function(id, btn) {
+        function showWorkout(id) {
             document.querySelectorAll('.workout-card').forEach(c => c.classList.remove('active'));
             document.querySelectorAll('.workout-tab').forEach(t => t.classList.remove('active'));
             document.getElementById('workout-' + id).classList.add('active');
-            if (btn) btn.classList.add('active');
-        };
+            const tab = document.querySelector(`.workout-tab[data-workout="${id}"]`);
+            if (tab) tab.classList.add('active');
+        }
+
+        document.getElementById('workoutTabs').addEventListener('click', (e) => {
+            const btn = e.target.closest('.workout-tab');
+            if (btn) showWorkout(btn.dataset.workout);
+        });
 
         // 오늘 요일에 맞는 탭 자동 선택 (월=A, 수=B, 금=C)
         (function autoSelectWorkoutTab() {
             const day = new Date().getDay();
             const map = { 1: 'a', 3: 'b', 5: 'c' };
-            if (map[day]) {
-                const tabId = map[day];
-                document.querySelectorAll('.workout-tab').forEach(t => {
-                    t.classList.remove('active');
-                    if (t.textContent.includes(tabId.toUpperCase() + ' ')) t.classList.add('active');
-                });
-                document.querySelectorAll('.workout-card').forEach(c => c.classList.remove('active'));
-                document.getElementById('workout-' + tabId).classList.add('active');
-            }
+            if (map[day]) showWorkout(map[day]);
         })();
 
         // ==================== Weight & Running ====================
@@ -875,27 +873,34 @@
             return recordDateInput.value;
         }
 
-        window.shiftDate = function(delta) {
+        function shiftDate(delta) {
             const d = new Date(recordDateInput.value);
             d.setDate(d.getDate() + delta);
             recordDateInput.value = d.getFullYear() + '-' +
                 String(d.getMonth() + 1).padStart(2, '0') + '-' +
                 String(d.getDate()).padStart(2, '0');
-            loadDateRecord();
-        };
+            window.loadDateRecord();
+        }
 
-        window.goToday = function() {
+        document.getElementById('datePrev').addEventListener('click', () => shiftDate(-1));
+        document.getElementById('dateNext').addEventListener('click', () => shiftDate(1));
+        document.getElementById('dateToday').addEventListener('click', () => {
             recordDateInput.value = getTodayKey();
-            loadDateRecord();
-        };
-
-        recordDateInput.addEventListener('change', loadDateRecord);
+            window.loadDateRecord();
+        });
+        recordDateInput.addEventListener('change', () => window.loadDateRecord());
+        document.getElementById('saveBtn').addEventListener('click', () => window.saveRecord());
 
         window.loadDateRecord = async function() {
+            if (window._saving) return;
             const dateKey = getSelectedDate();
-            const rec = await dbGet(`records/${dateKey}`);
-            document.getElementById('weightInput').value = rec?.weight || '';
-            document.getElementById('runInput').value = rec?.run || '';
+            try {
+                const rec = await dbGet(`records/${dateKey}`);
+                document.getElementById('weightInput').value = rec?.weight || '';
+                document.getElementById('runInput').value = rec?.run || '';
+            } catch(e) {
+                console.error('loadDateRecord error:', e);
+            }
         }
 
         window.saveRecord = async function() {
@@ -904,25 +909,35 @@
             if (!weight && !run) return;
 
             const dateKey = getSelectedDate();
+            const msg = document.getElementById('saveMsg');
+            msg.textContent = '저장 중...';
             window._saving = true;
 
-            const existing = await dbGet(`records/${dateKey}`) || {};
-            if (weight) existing.weight = weight;
-            if (run) existing.run = run;
-            await dbSet(`records/${dateKey}`, existing);
+            try {
+                const existing = await dbGet(`records/${dateKey}`) || {};
+                if (weight) existing.weight = weight;
+                if (run) existing.run = run;
+                await dbSet(`records/${dateKey}`, existing);
 
-            // 오늘 날짜인 경우에만 체크리스트 자동 체크
-            if (weight && dateKey === getTodayKey()) {
-                const checks = await dbGet(`checks/${dateKey}`) || {};
-                checks.weigh = true;
-                await dbSet(`checks/${dateKey}`, checks);
+                // 오늘 날짜인 경우에만 체크리스트 자동 체크
+                if (weight && dateKey === getTodayKey()) {
+                    const checks = await dbGet(`checks/${dateKey}`) || {};
+                    checks.weigh = true;
+                    await dbSet(`checks/${dateKey}`, checks);
+                }
+
+                msg.textContent = `${dateKey} 저장 완료!`;
+                msg.style.color = '#51cf66';
+            } catch(e) {
+                console.error('saveRecord error:', e);
+                msg.textContent = '저장 실패: ' + e.message;
+                msg.style.color = '#ff6b6b';
             }
 
-            document.getElementById('saveMsg').textContent = `${dateKey} 저장 완료!`;
             setTimeout(() => {
-                document.getElementById('saveMsg').textContent = '';
+                msg.textContent = '';
                 window._saving = false;
-            }, 2000);
+            }, 3000);
         };
 
         function renderTrend(records) {
@@ -935,12 +950,13 @@
                 return;
             }
 
-            // 선택된 날짜의 데이터를 input에 반영 (저장 중이 아닐 때만)
+            // 저장 중이 아닐 때만 input 반영
             if (!window._saving) {
                 const selDate = getSelectedDate();
-                const selRec = records[selDate];
-                document.getElementById('weightInput').value = selRec?.weight || '';
-                document.getElementById('runInput').value = selRec?.run || '';
+                if (records[selDate]) {
+                    document.getElementById('weightInput').value = records[selDate].weight || '';
+                    document.getElementById('runInput').value = records[selDate].run || '';
+                }
             }
 
             const weights = keys.map(k => records[k].weight).filter(Boolean);
@@ -965,7 +981,7 @@
                 const diffStr = diff ? (parseFloat(diff) <= 0 ? diff : '+' + diff) : '-';
                 const pct = w ? ((maxW - w) / range * 100) : 0;
 
-                html += `<div class="trend-row" style="cursor:pointer" onclick="document.getElementById('recordDate').value='${k}';loadDateRecord()">
+                html += `<div class="trend-row" style="cursor:pointer" data-date="${k}">
                     <span class="trend-date">${k.slice(5)}</span>
                     <div class="trend-bar-bg"><div class="trend-bar-fill" style="width:${w ? (100 - pct) : 0}%"></div></div>
                     <span class="trend-weight">${w ? w : '-'}</span>
@@ -984,6 +1000,14 @@
             }
 
             chart.innerHTML = html;
+
+            // 트렌드 행 클릭 → 해당 날짜 선택
+            chart.querySelectorAll('.trend-row[data-date]').forEach(row => {
+                row.addEventListener('click', () => {
+                    recordDateInput.value = row.dataset.date;
+                    window.loadDateRecord();
+                });
+            });
         }
 
         // ==================== Init App ====================
