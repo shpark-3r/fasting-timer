@@ -294,7 +294,10 @@
 
     <!-- Checklist -->
     <div class="card">
-        <div class="card-title">✅ 오늘의 체크리스트</div>
+        <div class="card-title" style="justify-content:space-between">
+            <span>✅ 오늘의 체크리스트</span>
+            <span id="checkProgress" style="font-size:0.75rem;color:#51cf66;font-weight:400">0/0</span>
+        </div>
         <div class="checklist" id="checklist"></div>
     </div>
 
@@ -582,22 +585,91 @@
         }
 
         // ==================== Checklist ====================
-        const CHECKLIST_ITEMS = [
-            { id: 'vita1', label: '오브맘 비타민젤리 ① 멀티비타민' },
-            { id: 'vita2', label: '오브맘 비타민젤리 ② 비타민C' },
-            { id: 'vita3', label: '오브맘 비타민젤리 ③ 비타민D' },
-            { id: 'vita4', label: '오브맘 비타민젤리 ④ 아연' },
-            { id: 'mag', label: '마그네슘샷' },
-            { id: 'fat', label: '푸응 팻버닝 7Days' },
-            { id: 'shower', label: '찬물샤워 완료' },
-            { id: 'weigh', label: '몸무게 측정 완료' },
-        ];
+        // 요일별 운동 스케줄 (0=일 ~ 6=토)
+        const EXERCISE_BY_DAY = {
+            0: [ // 일
+                { id: 'run_am', label: '🏃 아침 러닝 1.5km' },
+                { id: 'run_noon', label: '🏃 점심 러닝 3km' },
+                { id: 'run_pm', label: '🏃 저녁 러닝 1.5km' },
+            ],
+            1: [ // 월
+                { id: 'swim', label: '🏊 아침 수영' },
+                { id: 'run_am', label: '🏃 아침 러닝 1.5km' },
+                { id: 'run_noon', label: '🏃 점심 러닝 3km' },
+                { id: 'run_pm', label: '🏃 저녁 러닝 1.5km' },
+                { id: 'muscle', label: '💪 상체 근력운동 (A)' },
+            ],
+            2: [ // 화
+                { id: 'swim', label: '🏊 아침 수영' },
+                { id: 'run_am', label: '🏃 아침 러닝 1.5km' },
+                { id: 'run_noon', label: '🏃 점심 러닝 3km' },
+                { id: 'run_pm', label: '🏃 저녁 러닝 1.5km' },
+            ],
+            3: [ // 수
+                { id: 'swim', label: '🏊 아침 수영' },
+                { id: 'run_am', label: '🏃 아침 러닝 1.5km' },
+                { id: 'run_noon', label: '🏃 점심 러닝 3km' },
+                { id: 'run_pm', label: '🏃 저녁 러닝 1.5km' },
+                { id: 'muscle', label: '💪 하체 근력운동 (B)' },
+            ],
+            4: [ // 목
+                { id: 'swim', label: '🏊 아침 수영' },
+                { id: 'run_am', label: '🏃 아침 러닝 1.5km' },
+                { id: 'run_noon', label: '🏃 점심 러닝 3km' },
+                { id: 'run_pm', label: '🏃 저녁 러닝 1.5km' },
+            ],
+            5: [ // 금
+                { id: 'swim', label: '🏊 아침 수영' },
+                { id: 'run_am', label: '🏃 아침 러닝 1.5km' },
+                { id: 'run_noon', label: '🏃 점심 러닝 3km' },
+                { id: 'run_pm', label: '🏃 저녁 러닝 1.5km' },
+                { id: 'muscle', label: '💪 전신 근력운동 (C)' },
+            ],
+            6: [ // 토
+                { id: 'run_am', label: '🏃 아침 러닝 1.5km' },
+                { id: 'run_noon', label: '🏃 점심 러닝 3km' },
+                { id: 'run_pm', label: '🏃 저녁 러닝 1.5km' },
+            ],
+        };
+
+        function getChecklistItems() {
+            const day = new Date().getDay();
+            const exercises = EXERCISE_BY_DAY[day] || [];
+            return [
+                ...exercises,
+                { id: 'divider_sup', label: '── 영양제 ──', divider: true },
+                { id: 'vita1', label: '💊 오브맘 비타민젤리 ① 멀티비타민' },
+                { id: 'vita2', label: '💊 오브맘 비타민젤리 ② 비타민C' },
+                { id: 'vita3', label: '💊 오브맘 비타민젤리 ③ 비타민D' },
+                { id: 'vita4', label: '💊 오브맘 비타민젤리 ④ 아연' },
+                { id: 'mag', label: '💊 마그네슘샷' },
+                { id: 'fat', label: '💊 푸응 팻버닝 7Days' },
+                { id: 'divider_etc', label: '── 기타 ──', divider: true },
+                { id: 'shower', label: '🧊 찬물샤워 완료' },
+                { id: 'weigh', label: '⚖️ 몸무게 측정 완료' },
+            ];
+        }
 
         function renderChecklist(checks) {
             checks = checks || {};
+            const items = getChecklistItems();
             const container = document.getElementById('checklist');
             container.innerHTML = '';
-            for (const item of CHECKLIST_ITEMS) {
+
+            // 완료율 계산 (divider 제외)
+            const checkable = items.filter(i => !i.divider);
+            const doneCount = checkable.filter(i => checks[i.id]).length;
+            const pct = checkable.length ? Math.round((doneCount / checkable.length) * 100) : 0;
+            document.getElementById('checkProgress').textContent = `${doneCount}/${checkable.length} (${pct}%)`;
+
+            for (const item of items) {
+                if (item.divider) {
+                    const div = document.createElement('div');
+                    div.style.cssText = 'font-size:0.7rem;color:#666;padding:8px 0 4px;text-align:center';
+                    div.textContent = item.label;
+                    container.appendChild(div);
+                    continue;
+                }
                 const checked = checks[item.id] || false;
                 const label = document.createElement('label');
                 label.innerHTML = `
