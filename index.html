@@ -150,6 +150,40 @@
         .checklist input[type="checkbox"] { width: 18px; height: 18px; accent-color: #51cf66; cursor: pointer; }
         .checklist .checked-label { color: #666; text-decoration: line-through; }
 
+        /* Workout Detail */
+        .workout-card { display: none; }
+        .workout-card.active { display: block; }
+        .workout-section { margin-bottom: 14px; }
+        .workout-section-title {
+            font-size: 0.8rem; color: #ffd200; margin-bottom: 8px; font-weight: 600;
+        }
+        .workout-table {
+            width: 100%; border-collapse: collapse; font-size: 0.78rem;
+        }
+        .workout-table th {
+            text-align: left; color: #888; font-weight: 500; padding: 4px 6px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .workout-table td {
+            padding: 6px; color: #ddd;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        .workout-table td:first-child { color: #fff; font-weight: 500; }
+        .workout-table .set-info { color: #64b4ff; }
+        .workout-table .tip { color: #888; font-size: 0.72rem; }
+        .workout-tabs {
+            display: flex; gap: 6px; margin-bottom: 14px;
+        }
+        .workout-tab {
+            padding: 5px 14px; border-radius: 8px; font-size: 0.78rem;
+            border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.05);
+            color: #aaa; cursor: pointer;
+        }
+        .workout-tab.active {
+            background: rgba(255,210,0,0.15); border-color: rgba(255,210,0,0.3);
+            color: #ffd200;
+        }
+
         /* Weight & Running */
         .input-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
         .input-row label { font-size: 0.82rem; color: #aaa; white-space: nowrap; }
@@ -299,6 +333,114 @@
             <span id="checkProgress" style="font-size:0.75rem;color:#51cf66;font-weight:400">0/0</span>
         </div>
         <div class="checklist" id="checklist"></div>
+    </div>
+
+    <!-- Workout Detail -->
+    <div class="card">
+        <div class="card-title">💪 근력운동 가이드</div>
+        <div class="workout-tabs">
+            <button class="workout-tab active" onclick="showWorkout('a',this)">A 상체</button>
+            <button class="workout-tab" onclick="showWorkout('b',this)">B 하체</button>
+            <button class="workout-tab" onclick="showWorkout('c',this)">C 전신</button>
+        </div>
+
+        <div class="workout-card active" id="workout-a">
+            <div class="workout-section">
+                <table class="workout-table">
+                    <tr><th>운동</th><th>세트 × 횟수</th><th>포인트</th></tr>
+                    <tr>
+                        <td>인클라인 푸시업<br><span class="tip">계단에 손 짚고</span></td>
+                        <td class="set-info">4 × 8~12</td>
+                        <td class="tip">내려갈 때 3초</td>
+                    </tr>
+                    <tr>
+                        <td>인버티드로우<br><span class="tip">탁자 밑에서 당기기</span></td>
+                        <td class="set-info">3 × 8~10</td>
+                        <td class="tip">가슴을 탁자에 터치</td>
+                    </tr>
+                    <tr>
+                        <td>파이크 푸시업<br><span class="tip">엉덩이 높이 올리고</span></td>
+                        <td class="set-info">3 × 6~8</td>
+                        <td class="tip">어깨 자극 집중</td>
+                    </tr>
+                    <tr>
+                        <td>플랭크</td>
+                        <td class="set-info">3 × 30초</td>
+                        <td class="tip">엉덩이 안 올리기</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="workout-card" id="workout-b">
+            <div class="workout-section">
+                <table class="workout-table">
+                    <tr><th>운동</th><th>세트 × 횟수</th><th>포인트</th></tr>
+                    <tr>
+                        <td>스쿼트<br><span class="tip">104kg 체중이 곧 무게</span></td>
+                        <td class="set-info">4 × 12~15</td>
+                        <td class="tip">무릎이 발끝 방향</td>
+                    </tr>
+                    <tr>
+                        <td>런지 (교대)<br><span class="tip">균형 어려우면 벽 잡고</span></td>
+                        <td class="set-info">3 × 10 (각)</td>
+                        <td class="tip">뒷무릎 거의 바닥</td>
+                    </tr>
+                    <tr>
+                        <td>글루트브릿지<br><span class="tip">누워서 엉덩이 들기</span></td>
+                        <td class="set-info">3 × 15</td>
+                        <td class="tip">둔근 쥐어짜기</td>
+                    </tr>
+                    <tr>
+                        <td>카프레이즈<br><span class="tip">계단 끝에서</span></td>
+                        <td class="set-info">3 × 20</td>
+                        <td class="tip">천천히 올라갔다 내려오기</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="workout-card" id="workout-c">
+            <div class="workout-section">
+                <table class="workout-table">
+                    <tr><th>운동</th><th>세트 × 횟수</th><th>포인트</th></tr>
+                    <tr>
+                        <td>스쿼트</td>
+                        <td class="set-info">3 × 15</td>
+                        <td class="tip"></td>
+                    </tr>
+                    <tr>
+                        <td>인클라인 푸시업</td>
+                        <td class="set-info">3 × 10</td>
+                        <td class="tip"></td>
+                    </tr>
+                    <tr>
+                        <td>인버티드로우</td>
+                        <td class="set-info">3 × 8</td>
+                        <td class="tip"></td>
+                    </tr>
+                    <tr>
+                        <td>런지</td>
+                        <td class="set-info">3 × 8 (각)</td>
+                        <td class="tip"></td>
+                    </tr>
+                    <tr>
+                        <td>슈퍼맨<br><span class="tip">엎드려서 팔다리 들기</span></td>
+                        <td class="set-info">3 × 12</td>
+                        <td class="tip">등 하부 자극</td>
+                    </tr>
+                    <tr>
+                        <td>바이시클 크런치</td>
+                        <td class="set-info">3 × 15 (각)</td>
+                        <td class="tip">천천히, 비틀기</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div style="font-size:0.72rem;color:#666;margin-top:8px;line-height:1.5">
+            세트 간 휴식 60초 | 마지막 2회가 힘들어야 효과 있음 | 쉬워지면 횟수 말고 난이도 올리기
+        </div>
     </div>
 
     <!-- Weight & Running -->
@@ -701,6 +843,29 @@
                 container.appendChild(label);
             }
         }
+
+        // ==================== Workout Tabs ====================
+        window.showWorkout = function(id, btn) {
+            document.querySelectorAll('.workout-card').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.workout-tab').forEach(t => t.classList.remove('active'));
+            document.getElementById('workout-' + id).classList.add('active');
+            if (btn) btn.classList.add('active');
+        };
+
+        // 오늘 요일에 맞는 탭 자동 선택 (월=A, 수=B, 금=C)
+        (function autoSelectWorkoutTab() {
+            const day = new Date().getDay();
+            const map = { 1: 'a', 3: 'b', 5: 'c' };
+            if (map[day]) {
+                const tabId = map[day];
+                document.querySelectorAll('.workout-tab').forEach(t => {
+                    t.classList.remove('active');
+                    if (t.textContent.includes(tabId.toUpperCase() + ' ')) t.classList.add('active');
+                });
+                document.querySelectorAll('.workout-card').forEach(c => c.classList.remove('active'));
+                document.getElementById('workout-' + tabId).classList.add('active');
+            }
+        })();
 
         // ==================== Weight & Running ====================
         const recordDateInput = document.getElementById('recordDate');
