@@ -1,26 +1,4 @@
 {
-  "2026-04-06": {
-    "date": "2026.04.06",
-    "breakfast": [
-      "정식(1000)",
-      "하이라이스(pork included)",
-      "맑은우동국물",
-      "배추김치"
-    ],
-    "lunch": [
-      "정식(4500)",
-      "치즈닭갈비덮밥(chicken included)",
-      "맑은우동국물",
-      "허니버터감자튀김",
-      "요쿠르트",
-      "단무지"
-    ],
-    "dinner": [
-      "정식(1000)",
-      "제육김치덮밥(pork included)"
-    ],
-    "weekday": 0
-  },
   "2026-04-07": {
     "date": "2026.04.07",
     "breakfast": [
@@ -118,5 +96,12 @@
     "lunch": null,
     "dinner": null,
     "weekday": 6
+  },
+  "2026-04-13": {
+    "date": "2026.04.13",
+    "breakfast": null,
+    "lunch": null,
+    "dinner": null,
+    "weekday": 0
   }
 }
