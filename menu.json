@@ -1,22 +1,4 @@
 {
-  "2026-04-07": {
-    "date": "2026.04.07",
-    "breakfast": [
-      "정식(1000)",
-      "참치김치찌개",
-      "새우카츠",
-      "깍두기"
-    ],
-    "lunch": [
-      "정식(5500)",
-      "로제치킨까스(chicken included)"
-    ],
-    "dinner": [
-      "정식(1000)",
-      "육개장(beef included)"
-    ],
-    "weekday": 1
-  },
   "2026-04-08": {
     "date": "2026.04.08",
     "breakfast": [
@@ -103,5 +85,12 @@
     "lunch": null,
     "dinner": null,
     "weekday": 0
+  },
+  "2026-04-14": {
+    "date": "2026.04.14",
+    "breakfast": null,
+    "lunch": null,
+    "dinner": null,
+    "weekday": 1
   }
 }
