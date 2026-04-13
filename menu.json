@@ -1,20 +1,4 @@
 {
-  "2026-04-13": {
-    "date": "2026.04.13",
-    "breakfast": [
-      "정식(1000)",
-      "참치김치덮밥",
-      "맑은우동국물",
-      "고구마맛탕",
-      "단무지"
-    ],
-    "lunch": [
-      "정식(5500)",
-      "고구마치즈돈까스(pork included)"
-    ],
-    "dinner": null,
-    "weekday": 0
-  },
   "2026-04-14": {
     "date": "2026.04.14",
     "breakfast": [
@@ -106,5 +90,12 @@
     "lunch": null,
     "dinner": null,
     "weekday": 6
+  },
+  "2026-04-20": {
+    "date": "2026.04.20",
+    "breakfast": null,
+    "lunch": null,
+    "dinner": null,
+    "weekday": 0
   }
 }
