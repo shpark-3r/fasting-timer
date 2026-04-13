@@ -221,7 +221,12 @@
             color: #ffd200; font-size: 0.75rem; width: auto; padding: 0 10px;
         }
 
-        .trend-chart { margin-top: 12px; padding: 10px; background: rgba(255,255,255,0.03); border-radius: 10px; }
+        .trend-chart {
+            margin-top: 12px; padding: 10px; background: rgba(255,255,255,0.03);
+            border-radius: 10px; max-height: 320px; overflow-y: auto;
+        }
+        .trend-chart::-webkit-scrollbar { width: 4px; }
+        .trend-chart::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
         .trend-row {
             display: flex; justify-content: space-between; align-items: center;
             font-size: 0.78rem; padding: 3px 0; border-bottom: 1px solid rgba(255,255,255,0.03);
@@ -241,6 +246,70 @@
         .trend-bar-fill { height: 100%; border-radius: 2px; background: linear-gradient(90deg, #51cf66, #ffd200); }
 
         .now-time { color: #888; font-size: 0.75rem; margin-top: 8px; }
+
+        /* Goal Progress */
+        .goal-card { text-align: center; }
+        .goal-headline {
+            font-size: 0.85rem; color: #aaa; margin-bottom: 6px;
+        }
+        .goal-weights {
+            display: flex; justify-content: space-between; align-items: baseline;
+            font-size: 0.75rem; color: #888; margin-bottom: 6px;
+        }
+        .goal-current {
+            font-size: 1.8rem; font-weight: 700; color: #ffd200;
+            font-variant-numeric: tabular-nums;
+        }
+        .goal-target { color: #51cf66; font-weight: 600; }
+        .goal-progress-bg {
+            width: 100%; height: 8px; background: rgba(255,255,255,0.1);
+            border-radius: 4px; overflow: hidden; margin-bottom: 10px;
+        }
+        .goal-progress-fill {
+            height: 100%; background: linear-gradient(90deg, #51cf66, #ffd200, #f7971e);
+            border-radius: 4px; transition: width 0.5s ease;
+        }
+        .goal-stats {
+            display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;
+            font-size: 0.75rem;
+        }
+        .goal-stat { background: rgba(255,255,255,0.04); border-radius: 8px; padding: 8px 4px; }
+        .goal-stat .stat-label { color: #888; font-size: 0.7rem; margin-bottom: 2px; }
+        .goal-stat .stat-value { color: #fff; font-weight: 600; font-size: 0.9rem; }
+        .goal-stat .stat-value.pace-ok { color: #51cf66; }
+        .goal-stat .stat-value.pace-warn { color: #ff6b6b; }
+
+        /* Protein Tracker */
+        .protein-total {
+            font-size: 1.4rem; font-weight: 700; color: #ffd200;
+            text-align: center; margin-bottom: 4px;
+            font-variant-numeric: tabular-nums;
+        }
+        .protein-goal { text-align: center; font-size: 0.75rem; color: #888; margin-bottom: 10px; }
+        .protein-bar-bg {
+            width: 100%; height: 6px; background: rgba(255,255,255,0.1);
+            border-radius: 3px; overflow: hidden; margin-bottom: 12px;
+        }
+        .protein-bar-fill {
+            height: 100%; background: linear-gradient(90deg, #ff6b6b, #ffd200, #51cf66);
+            border-radius: 3px; transition: width 0.3s ease;
+        }
+        .protein-btns {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px;
+        }
+        .protein-btn {
+            background: rgba(255,210,0,0.1); border: 1px solid rgba(255,210,0,0.25);
+            color: #ffd200; padding: 8px 4px; border-radius: 8px;
+            font-size: 0.72rem; cursor: pointer; line-height: 1.2;
+        }
+        .protein-btn:hover { background: rgba(255,210,0,0.2); }
+        .protein-btn .pg { display: block; font-size: 0.65rem; color: #aaa; margin-top: 2px; }
+        .protein-reset {
+            margin-top: 8px; background: rgba(255,107,107,0.1);
+            border: 1px solid rgba(255,107,107,0.25); color: #ff6b6b;
+            padding: 5px 10px; border-radius: 6px; font-size: 0.7rem; cursor: pointer;
+            width: 100%;
+        }
 
         @media (max-width: 460px) {
             body { padding: 12px 10px 30px; }
@@ -262,8 +331,36 @@
     </div>
 
     <h1>간헐적 단식 대시보드</h1>
-    <p class="subtitle">OMAD 23:1 | 목표: 106kg → 70kg</p>
+    <p class="subtitle">OMAD 23:1 | 🇯🇵 6/30 일본여행까지 80kg</p>
     <div class="sync-status" id="syncStatus">...</div>
+
+    <!-- Goal Progress -->
+    <div class="card goal-card">
+        <div class="card-title" style="justify-content:center">🎯 80kg 챌린지</div>
+        <div class="goal-headline" id="goalHeadline">기록 로딩 중...</div>
+        <div class="goal-current" id="goalCurrent">-- kg</div>
+        <div class="goal-weights">
+            <span>시작 107.7kg</span>
+            <span class="goal-target">목표 80.0kg</span>
+        </div>
+        <div class="goal-progress-bg">
+            <div class="goal-progress-fill" id="goalProgressFill" style="width:0%"></div>
+        </div>
+        <div class="goal-stats">
+            <div class="goal-stat">
+                <div class="stat-label">남은 체중</div>
+                <div class="stat-value" id="goalRemaining">-</div>
+            </div>
+            <div class="goal-stat">
+                <div class="stat-label">D-day</div>
+                <div class="stat-value" id="goalDday">-</div>
+            </div>
+            <div class="goal-stat">
+                <div class="stat-label">필요 페이스</div>
+                <div class="stat-value" id="goalPace">-</div>
+            </div>
+        </div>
+    </div>
 
     <!-- Timer -->
     <div class="card timer-card">
@@ -323,7 +420,26 @@
     <div class="card">
         <div class="card-title">💧 수분 섭취</div>
         <div class="water-grid" id="waterGrid"></div>
-        <div class="water-total">오늘 <span id="waterTotal">0</span> / 2,000ml (250ml × 8잔)</div>
+        <div class="water-total">오늘 <span id="waterTotal">0</span> / 3,000ml (250ml × 12잔)</div>
+    </div>
+
+    <!-- Protein Tracker -->
+    <div class="card">
+        <div class="card-title">🍗 단백질 섭취</div>
+        <div class="protein-total"><span id="proteinTotal">0</span>g</div>
+        <div class="protein-goal">목표 120g / 근손실 방지 하한선</div>
+        <div class="protein-bar-bg">
+            <div class="protein-bar-fill" id="proteinBarFill" style="width:0%"></div>
+        </div>
+        <div class="protein-btns">
+            <button class="protein-btn" data-g="13">계란 2개<span class="pg">+13g</span></button>
+            <button class="protein-btn" data-g="25">닭가슴살 100g<span class="pg">+25g</span></button>
+            <button class="protein-btn" data-g="30">닭스테이크<span class="pg">+30g</span></button>
+            <button class="protein-btn" data-g="8">두부텐더<span class="pg">+8g</span></button>
+            <button class="protein-btn" data-g="20">단백질쉐이크<span class="pg">+20g</span></button>
+            <button class="protein-btn" data-g="5">+5g<span class="pg">기타</span></button>
+        </div>
+        <button class="protein-reset" id="proteinReset">오늘 기록 초기화</button>
     </div>
 
     <!-- Checklist -->
@@ -342,6 +458,7 @@
             <button class="workout-tab active" data-workout="a">A 상체</button>
             <button class="workout-tab" data-workout="b">B 하체</button>
             <button class="workout-tab" data-workout="c">C 전신</button>
+            <button class="workout-tab" data-workout="d">D 코어(매일)</button>
         </div>
 
         <div class="workout-card active" id="workout-a">
@@ -435,6 +552,43 @@
                         <td class="tip">천천히, 비틀기</td>
                     </tr>
                 </table>
+            </div>
+        </div>
+
+        <div class="workout-card" id="workout-d">
+            <div class="workout-section">
+                <div class="workout-section-title">옆구리 & 코어 전용 — 매일 수행</div>
+                <table class="workout-table">
+                    <tr><th>운동</th><th>세트 × 횟수</th><th>포인트</th></tr>
+                    <tr>
+                        <td>사이드 플랭크<br><span class="tip">옆으로 누워 버티기</span></td>
+                        <td class="set-info">3 × 30초 (양쪽)</td>
+                        <td class="tip">복사근 활성 → 옆구리 라인</td>
+                    </tr>
+                    <tr>
+                        <td>데드버그<br><span class="tip">누워서 대각선 팔다리</span></td>
+                        <td class="set-info">3 × 10 (각)</td>
+                        <td class="tip">허리 바닥에 붙이기</td>
+                    </tr>
+                    <tr>
+                        <td>버드독<br><span class="tip">네발 자세, 대각선 뻗기</span></td>
+                        <td class="set-info">3 × 10 (각)</td>
+                        <td class="tip">허리 흔들림 금지</td>
+                    </tr>
+                    <tr>
+                        <td>슈퍼맨 홀드<br><span class="tip">엎드려 팔다리 들고 유지</span></td>
+                        <td class="set-info">3 × 20초</td>
+                        <td class="tip">등 하부 자극</td>
+                    </tr>
+                    <tr>
+                        <td>우드 찹퍼<br><span class="tip">페트병 들고 대각선 스윙</span></td>
+                        <td class="set-info">3 × 12 (각)</td>
+                        <td class="tip">회전 근육 자극</td>
+                    </tr>
+                </table>
+                <div style="font-size:0.7rem;color:#888;margin-top:10px;line-height:1.5">
+                    ⚠️ 옆구리 지방은 부분감량 불가 — 이 운동은 "근육 두께"를 키워 감량 후 처짐을 방지합니다.
+                </div>
             </div>
         </div>
 
@@ -712,7 +866,7 @@
         function renderWater(count) {
             const grid = document.getElementById('waterGrid');
             grid.innerHTML = '';
-            for (let i = 0; i < 8; i++) {
+            for (let i = 0; i < 12; i++) {
                 const btn = document.createElement('button');
                 btn.className = 'water-btn' + (i < count ? ' filled' : '');
                 btn.textContent = i < count ? '💧' : '○';
@@ -808,6 +962,11 @@
             items.push({ id: 'salt_pm', label: '🧂 오후 소금물' });
             if (runPm) items.push(runPm);
             if (muscle) items.push(muscle);
+
+            items.push({ id: 'divider_core', label: '── 매일 코어 (옆구리) ──', divider: true });
+            items.push({ id: 'core_sideplank', label: '🌀 사이드 플랭크 30초 × 3 (양쪽)' });
+            items.push({ id: 'core_deadbug', label: '🪲 데드버그 3 × 10' });
+            items.push({ id: 'core_birddog', label: '🐦 버드독 3 × 10' });
 
             return items;
         }
@@ -944,7 +1103,7 @@
 
         function renderTrend(records) {
             records = records || {};
-            const keys = Object.keys(records).sort().slice(-14);
+            const keys = Object.keys(records).sort();
             const chart = document.getElementById('trendChart');
 
             if (keys.length === 0) {
@@ -1012,6 +1171,67 @@
             });
         }
 
+        // ==================== Goal Progress ====================
+        const GOAL_START = 107.7;
+        const GOAL_TARGET = 80.0;
+        const GOAL_DEADLINE = new Date('2026-06-30T00:00:00');
+
+        function renderGoal(records) {
+            records = records || {};
+            const keys = Object.keys(records).filter(k => records[k].weight).sort();
+            if (keys.length === 0) return;
+            const latestKey = keys[keys.length - 1];
+            const current = records[latestKey].weight;
+
+            const totalLoss = GOAL_START - GOAL_TARGET;
+            const doneLoss = Math.max(0, GOAL_START - current);
+            const pct = Math.min(100, (doneLoss / totalLoss) * 100);
+            const remaining = Math.max(0, current - GOAL_TARGET);
+
+            const now = new Date();
+            const dday = Math.ceil((GOAL_DEADLINE - now) / 86400000);
+            const neededPace = dday > 0 ? (remaining / dday) : 0;
+
+            document.getElementById('goalCurrent').textContent = current.toFixed(1) + ' kg';
+            document.getElementById('goalHeadline').textContent =
+                `${doneLoss.toFixed(1)}kg 감량 완료 · ${pct.toFixed(1)}% 진행`;
+            document.getElementById('goalProgressFill').style.width = pct + '%';
+            document.getElementById('goalRemaining').textContent = '-' + remaining.toFixed(1) + 'kg';
+            document.getElementById('goalDday').textContent = dday > 0 ? 'D-' + dday : 'D-day!';
+
+            const paceEl = document.getElementById('goalPace');
+            if (dday <= 0) {
+                paceEl.textContent = '마감';
+                paceEl.className = 'stat-value';
+            } else {
+                paceEl.textContent = (neededPace * 1000).toFixed(0) + 'g/일';
+                paceEl.className = 'stat-value ' + (neededPace <= 0.3 ? 'pace-ok' : 'pace-warn');
+            }
+        }
+
+        // ==================== Protein Tracker ====================
+        function renderProtein(g) {
+            g = g || 0;
+            document.getElementById('proteinTotal').textContent = g;
+            const pct = Math.min(100, (g / 120) * 100);
+            document.getElementById('proteinBarFill').style.width = pct + '%';
+        }
+
+        document.querySelectorAll('.protein-btn').forEach(btn => {
+            btn.addEventListener('click', async () => {
+                const add = parseInt(btn.dataset.g);
+                const key = getTodayKey();
+                const cur = await dbGet(`protein/${key}`) || 0;
+                await dbSet(`protein/${key}`, cur + add);
+            });
+        });
+
+        document.getElementById('proteinReset').addEventListener('click', async () => {
+            if (confirm('오늘 단백질 기록을 초기화할까요?')) {
+                await dbSet(`protein/${getTodayKey()}`, 0);
+            }
+        });
+
         // ==================== Init App ====================
         async function initApp() {
             setSyncStatus(true);
@@ -1033,7 +1253,11 @@
             // Real-time listeners
             dbListen(`water/${getTodayKey()}`, (val) => renderWater(val || 0));
             dbListen(`checks/${getTodayKey()}`, (val) => renderChecklist(val));
-            dbListen('records', (val) => renderTrend(val));
+            dbListen(`protein/${getTodayKey()}`, (val) => renderProtein(val || 0));
+            dbListen('records', (val) => {
+                renderTrend(val);
+                renderGoal(val);
+            });
         }
     </script>
 </body>
