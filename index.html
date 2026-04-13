@@ -235,6 +235,7 @@
         .trend-date { color: #888; width: 70px; }
         .trend-weight { color: #ffd200; font-weight: 600; width: 55px; text-align: right; }
         .trend-run { color: #64b4ff; width: 50px; text-align: right; }
+        .trend-check { color: #51cf66; width: 42px; text-align: right; font-size: 0.72rem; }
         .trend-diff { width: 60px; text-align: right; font-size: 0.75rem; }
         .trend-diff.down { color: #51cf66; }
         .trend-diff.up { color: #ff6b6b; }
@@ -1107,7 +1108,7 @@
             }, 3000);
         };
 
-        function renderTrend(records) {
+        async function renderTrend(records) {
             records = records || {};
             const keys = Object.keys(records).sort();
             const chart = document.getElementById('trendChart');
@@ -1126,6 +1127,18 @@
                 }
             }
 
+            // 체크리스트 & 단백질 데이터 로드
+            const allChecks = await dbGet('checks') || {};
+            const allProtein = await dbGet('protein') || {};
+
+            function getCheckPct(dateKey) {
+                const checks = allChecks[dateKey];
+                if (!checks) return null;
+                const done = Object.values(checks).filter(v => v === true).length;
+                const total = Object.keys(checks).length;
+                return total > 0 ? Math.round((done / total) * 100) : null;
+            }
+
             const weights = keys.map(k => records[k].weight).filter(Boolean);
             const minW = Math.min(...weights) - 1;
             const maxW = Math.max(...weights) + 1;
@@ -1135,7 +1148,8 @@
                 '<span class="trend-header" style="flex:1;text-align:center">경향</span>' +
                 '<span class="trend-header trend-weight">체중</span>' +
                 '<span class="trend-header trend-diff">변화</span>' +
-                '<span class="trend-header trend-run">러닝</span></div>';
+                '<span class="trend-header trend-run">러닝</span>' +
+                '<span class="trend-header trend-check">체크</span></div>';
 
             for (let i = 0; i < keys.length; i++) {
                 const k = keys[i];
@@ -1147,6 +1161,13 @@
                 const diffClass = diff ? (parseFloat(diff) <= 0 ? 'down' : 'up') : '';
                 const diffStr = diff ? (parseFloat(diff) <= 0 ? diff : '+' + diff) : '-';
                 const pct = w ? ((maxW - w) / range * 100) : 0;
+                const checkPct = getCheckPct(k);
+                const checkStr = checkPct !== null ? checkPct + '%' : '-';
+                const checkColor = checkPct !== null
+                    ? (checkPct >= 80 ? '#51cf66' : checkPct >= 50 ? '#ffd200' : '#ff6b6b')
+                    : '#666';
+                const protein = allProtein[k];
+                const proteinStr = protein ? protein + 'g' : '';
 
                 html += `<div class="trend-row" style="cursor:pointer" data-date="${k}">
                     <span class="trend-date">${k.slice(5)}</span>
@@ -1154,15 +1175,19 @@
                     <span class="trend-weight">${w ? w : '-'}</span>
                     <span class="trend-diff ${diffClass}">${diffStr}</span>
                     <span class="trend-run">${run ? run + 'km' : '-'}</span>
+                    <span class="trend-check" style="color:${checkColor}">${checkStr}</span>
                 </div>`;
             }
 
             if (weights.length >= 2) {
                 const totalLoss = (weights[0] - weights[weights.length - 1]).toFixed(1);
                 const totalRun = keys.reduce((sum, k) => sum + (records[k].run || 0), 0);
+                const avgCheck = keys.map(k => getCheckPct(k)).filter(v => v !== null);
+                const avgCheckStr = avgCheck.length > 0 ? Math.round(avgCheck.reduce((a, b) => a + b, 0) / avgCheck.length) : 0;
                 html += `<div style="margin-top:10px;font-size:0.78rem;color:#aaa;text-align:center">
                     총 변화: <span style="color:${parseFloat(totalLoss) >= 0 ? '#51cf66' : '#ff6b6b'};font-weight:600">${parseFloat(totalLoss) >= 0 ? '-' : '+'}${Math.abs(totalLoss)}kg</span>
-                    &nbsp;|&nbsp; 총 러닝: <span style="color:#64b4ff;font-weight:600">${totalRun.toFixed(1)}km</span>
+                    &nbsp;|&nbsp; 러닝: <span style="color:#64b4ff;font-weight:600">${totalRun.toFixed(1)}km</span>
+                    &nbsp;|&nbsp; 평균 체크: <span style="color:#51cf66;font-weight:600">${avgCheckStr}%</span>
                 </div>`;
             }
 
