@@ -1,23 +1,4 @@
 {
-  "2026-04-17": {
-    "date": "2026.04.17",
-    "breakfast": [
-      "정식(1000)",
-      "소고기미역국(beef included)",
-      "잡채(pork included)",
-      "연두부&양념장",
-      "깍두기"
-    ],
-    "lunch": [
-      "정식(4500)",
-      "손만두국(pork included)",
-      "비엔나케찹조림(pork included)",
-      "도시락김",
-      "깍두기"
-    ],
-    "dinner": null,
-    "weekday": 4
-  },
   "2026-04-18": {
     "date": "2026.04.18",
     "breakfast": null,
@@ -75,10 +56,9 @@
     ],
     "lunch": [
       "정식(4500)",
-      "제육야채덮밥(pork included)",
-      "맑은우동국물",
-      "만두탕수(pork included)",
-      "요쿠르트",
+      "부대찌개(pork included)",
+      "미니돈까스(pork included)",
+      "도시락김",
       "깍두기"
     ],
     "dinner": null,
@@ -94,13 +74,33 @@
       "배추김치"
     ],
     "lunch": [
-      "정식(4500)",
-      "부대찌개(pork included)",
-      "미니돈까스(pork included)",
-      "도시락김",
-      "깍두기"
+      "정식(5500)",
+      "매운차돌쌀국수(beef included)",
+      "후리가케주먹밥",
+      "춘권튀김",
+      "단무지"
     ],
     "dinner": null,
     "weekday": 3
+  },
+  "2026-04-24": {
+    "date": "2026.04.24",
+    "breakfast": [
+      "정식(1000)",
+      "미역된장국",
+      "닭갈비(chicken included)",
+      "마카로니샐러드(pork included)",
+      "깍두기"
+    ],
+    "lunch": [
+      "정식(4500)",
+      "제육야채덮밥(pork included)",
+      "맑은우동국물",
+      "만두탕수(pork included)",
+      "요쿠르트",
+      "깍두기"
+    ],
+    "dinner": null,
+    "weekday": 4
   }
 }
