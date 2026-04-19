@@ -1,11 +1,4 @@
 {
-  "2026-04-19": {
-    "date": "2026.04.19",
-    "breakfast": null,
-    "lunch": null,
-    "dinner": null,
-    "weekday": 6
-  },
   "2026-04-20": {
     "date": "2026.04.20",
     "breakfast": [
@@ -102,5 +95,12 @@
     "lunch": null,
     "dinner": null,
     "weekday": 5
+  },
+  "2026-04-26": {
+    "date": "2026.04.26",
+    "breakfast": null,
+    "lunch": null,
+    "dinner": null,
+    "weekday": 6
   }
 }
