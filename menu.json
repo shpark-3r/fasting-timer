@@ -1,21 +1,4 @@
 {
-  "2026-04-20": {
-    "date": "2026.04.20",
-    "breakfast": [
-      "정식(1000)",
-      "참치야채죽",
-      "메추리알장조림",
-      "우리쌀씨리얼",
-      "우유",
-      "깍두기"
-    ],
-    "lunch": [
-      "정식(4500)",
-      "순살돈까스/소스"
-    ],
-    "dinner": null,
-    "weekday": 0
-  },
   "2026-04-21": {
     "date": "2026.04.21",
     "breakfast": [
@@ -102,5 +85,12 @@
     "lunch": null,
     "dinner": null,
     "weekday": 6
+  },
+  "2026-04-27": {
+    "date": "2026.04.27",
+    "breakfast": null,
+    "lunch": null,
+    "dinner": null,
+    "weekday": 0
   }
 }
