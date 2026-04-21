@@ -1,20 +1,4 @@
 {
-  "2026-04-21": {
-    "date": "2026.04.21",
-    "breakfast": [
-      "정식(1000)",
-      "해물볶음밥",
-      "유부된장국",
-      "새우카츠",
-      "깍두기"
-    ],
-    "lunch": [
-      "정식(4500)",
-      "목살필라프&계란후라이(pork included)"
-    ],
-    "dinner": null,
-    "weekday": 1
-  },
   "2026-04-22": {
     "date": "2026.04.22",
     "breakfast": [
@@ -92,5 +76,12 @@
     "lunch": null,
     "dinner": null,
     "weekday": 0
+  },
+  "2026-04-28": {
+    "date": "2026.04.28",
+    "breakfast": null,
+    "lunch": null,
+    "dinner": null,
+    "weekday": 1
   }
 }
