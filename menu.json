@@ -1,23 +1,4 @@
 {
-  "2026-04-23": {
-    "date": "2026.04.23",
-    "breakfast": [
-      "정식(1000)",
-      "짜장밥(pork included)",
-      "계란파국",
-      "군만두(pork included)",
-      "배추김치"
-    ],
-    "lunch": [
-      "정식(5500)",
-      "매운차돌쌀국수(beef included)",
-      "후리가케주먹밥",
-      "춘권튀김",
-      "단무지"
-    ],
-    "dinner": null,
-    "weekday": 3
-  },
   "2026-04-24": {
     "date": "2026.04.24",
     "breakfast": [
@@ -112,5 +93,20 @@
     ],
     "dinner": null,
     "weekday": 2
+  },
+  "2026-04-30": {
+    "date": "2026.04.30",
+    "breakfast": [
+      "정식(1000)",
+      "효뜨 돼지고기덮밥(pork included)",
+      "미역된장국",
+      "깍두기"
+    ],
+    "lunch": [
+      "정식(5500)",
+      "칠리치킨까스(chicken included)"
+    ],
+    "dinner": null,
+    "weekday": 3
   }
 }
