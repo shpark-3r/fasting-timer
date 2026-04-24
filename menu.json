@@ -1,24 +1,4 @@
 {
-  "2026-04-24": {
-    "date": "2026.04.24",
-    "breakfast": [
-      "정식(1000)",
-      "미역된장국",
-      "닭갈비(chicken included)",
-      "마카로니샐러드(pork included)",
-      "깍두기"
-    ],
-    "lunch": [
-      "정식(4500)",
-      "제육야채덮밥(pork included)",
-      "맑은우동국물",
-      "만두탕수(pork included)",
-      "요쿠르트",
-      "깍두기"
-    ],
-    "dinner": null,
-    "weekday": 4
-  },
   "2026-04-25": {
     "date": "2026.04.25",
     "breakfast": null,
@@ -108,5 +88,12 @@
     ],
     "dinner": null,
     "weekday": 3
+  },
+  "2026-05-01": {
+    "date": "2026.05.01",
+    "breakfast": null,
+    "lunch": null,
+    "dinner": null,
+    "weekday": 4
   }
 }
