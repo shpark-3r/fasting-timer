@@ -1,25 +1,4 @@
 {
-  "2026-04-27": {
-    "date": "2026.04.27",
-    "breakfast": [
-      "정식(1000)",
-      "하이라이스(pork included)",
-      "함박스테이크(pork included)",
-      "맑은우동국물",
-      "배추김치"
-    ],
-    "lunch": [
-      "정식(4500)",
-      "김치볶음밥(pork included)",
-      "누드소세지(pork included)",
-      "맑은우동국물",
-      "마카로니샐러드(pork included)",
-      "베이비슈",
-      "단무지"
-    ],
-    "dinner": null,
-    "weekday": 0
-  },
   "2026-04-28": {
     "date": "2026.04.28",
     "breakfast": [
@@ -95,5 +74,12 @@
     "lunch": null,
     "dinner": null,
     "weekday": 6
+  },
+  "2026-05-04": {
+    "date": "2026.05.04",
+    "breakfast": null,
+    "lunch": null,
+    "dinner": null,
+    "weekday": 0
   }
 }
