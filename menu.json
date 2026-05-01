@@ -1,11 +1,4 @@
 {
-  "2026-05-01": {
-    "date": "2026.05.01",
-    "breakfast": null,
-    "lunch": null,
-    "dinner": null,
-    "weekday": 4
-  },
   "2026-05-02": {
     "date": "2026.05.02",
     "breakfast": null,
@@ -83,5 +76,20 @@
     ],
     "dinner": null,
     "weekday": 3
+  },
+  "2026-05-08": {
+    "date": "2026.05.08",
+    "breakfast": [
+      "정식(1000)",
+      "새우튀김카레라이스(pork included)",
+      "맑은우동국물",
+      "배추김치"
+    ],
+    "lunch": [
+      "정식(4500)",
+      "함박토마토파스타(pork included)"
+    ],
+    "dinner": null,
+    "weekday": 4
   }
 }
