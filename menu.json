@@ -1,20 +1,4 @@
 {
-  "2026-05-04": {
-    "date": "2026.05.04",
-    "breakfast": [
-      "정식(1000)",
-      "참치김치덮밥",
-      "유부된장국",
-      "고구마맛탕",
-      "단무지"
-    ],
-    "lunch": [
-      "정식(5500)",
-      "고구마치즈돈까스(pork included)"
-    ],
-    "dinner": null,
-    "weekday": 0
-  },
   "2026-05-05": {
     "date": "2026.05.05",
     "breakfast": null,
@@ -91,5 +75,19 @@
     "lunch": null,
     "dinner": null,
     "weekday": 6
+  },
+  "2026-05-11": {
+    "date": "2026.05.11",
+    "breakfast": null,
+    "lunch": [
+      "정식(6000)",
+      "피자돈까스(pork included)",
+      "맑은우동국물",
+      "크림소스팬네파스타(pork included)",
+      "시저샐러드",
+      "단무지"
+    ],
+    "dinner": null,
+    "weekday": 0
   }
 }
