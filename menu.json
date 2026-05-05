@@ -1,11 +1,4 @@
 {
-  "2026-05-05": {
-    "date": "2026.05.05",
-    "breakfast": null,
-    "lunch": null,
-    "dinner": null,
-    "weekday": 1
-  },
   "2026-05-06": {
     "date": "2026.05.06",
     "breakfast": [
@@ -89,5 +82,19 @@
     ],
     "dinner": null,
     "weekday": 0
+  },
+  "2026-05-12": {
+    "date": "2026.05.12",
+    "breakfast": null,
+    "lunch": [
+      "정식(6000)",
+      "닭곰탕(chicken included)",
+      "만두유린기(pork included)",
+      "콩나물비빔라면",
+      "감자조림",
+      "깍두기"
+    ],
+    "dinner": null,
+    "weekday": 1
   }
 }
