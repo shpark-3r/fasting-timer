@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -1290,10 +1290,6 @@
         async function initApp() {
             setSyncStatus(true);
 
-            console.log('[DEBUG] auth.currentUser:', auth.currentUser);
-            console.log('[DEBUG] uid:', auth.currentUser?.uid);
-            console.log('[DEBUG] dbRef path:', `users/${userPin}/settings`);
-            console.log('[DEBUG] db app name:', db.app.name, 'auth app name:', auth.app.name);
 
             // Load settings
             const settings = await dbGet('settings');
