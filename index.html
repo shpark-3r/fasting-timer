@@ -630,6 +630,7 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
         import { getDatabase, ref, set, get, onValue } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-database.js";
+        import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyDZyheiQ01y3anwNF57fVx6vozV31s998Q",
@@ -643,6 +644,22 @@
 
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
+        const auth = getAuth(app);
+
+        // ==================== Anonymous Auth ====================
+        let authReady = false;
+        const authPromise = new Promise((resolve) => {
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    authReady = true;
+                    resolve();
+                }
+            });
+            signInAnonymously(auth).catch((err) => {
+                console.error('Anonymous sign-in failed:', err);
+                setSyncStatus(false);
+            });
+        });
 
         // ==================== PIN & DB Helpers ====================
         let userPin = localStorage.getItem('fasting-pin') || '';
@@ -668,14 +685,15 @@
         }
 
         // ==================== PIN Modal ====================
-        function checkPin() {
+        async function checkPin() {
             if (userPin && userPin.length === 4) {
+                await authPromise;
                 document.getElementById('pinOverlay').style.display = 'none';
                 initApp();
             }
         }
 
-        window.submitPin = function() {
+        window.submitPin = async function() {
             const val = document.getElementById('pinInput').value.trim();
             if (val.length !== 4 || isNaN(val)) {
                 alert('4자리 숫자를 입력하세요');
@@ -683,6 +701,7 @@
             }
             userPin = val;
             localStorage.setItem('fasting-pin', userPin);
+            await authPromise;
             document.getElementById('pinOverlay').style.display = 'none';
             initApp();
         };
@@ -1270,6 +1289,11 @@
         // ==================== Init App ====================
         async function initApp() {
             setSyncStatus(true);
+
+            console.log('[DEBUG] auth.currentUser:', auth.currentUser);
+            console.log('[DEBUG] uid:', auth.currentUser?.uid);
+            console.log('[DEBUG] dbRef path:', `users/${userPin}/settings`);
+            console.log('[DEBUG] db app name:', db.app.name, 'auth app name:', auth.app.name);
 
             // Load settings
             const settings = await dbGet('settings');
