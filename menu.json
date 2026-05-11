@@ -1,23 +1,4 @@
 {
-  "2026-05-11": {
-    "date": "2026.05.11",
-    "breakfast": [
-      "정식(1000)",
-      "부대찌개(pork included)",
-      "요쿠르트",
-      "깍두기"
-    ],
-    "lunch": [
-      "정식(4500)",
-      "김치볶음밥&소세지(pork included)",
-      "맑은우동국물",
-      "마카로니샐러드(pork included)",
-      "베이비슈",
-      "단무지"
-    ],
-    "dinner": null,
-    "weekday": 0
-  },
   "2026-05-12": {
     "date": "2026.05.12",
     "breakfast": [
@@ -44,7 +25,7 @@
       "단무지"
     ],
     "lunch": [
-      "정식(1000)",
+      "정식(5500)",
       "순살감자탕(pork included)",
       "어묵볶음",
       "요쿠르트",
@@ -106,5 +87,19 @@
     "lunch": null,
     "dinner": null,
     "weekday": 6
+  },
+  "2026-05-18": {
+    "date": "2026.05.18",
+    "breakfast": null,
+    "lunch": [
+      "정식(6000)",
+      "콩나물밥/양념간장(beef included)",
+      "우렁된장찌개",
+      "돈불고기(pork included)",
+      "청양풍볶음우동",
+      "배추김치"
+    ],
+    "dinner": null,
+    "weekday": 0
   }
 }
