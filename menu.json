@@ -1,20 +1,4 @@
 {
-  "2026-05-12": {
-    "date": "2026.05.12",
-    "breakfast": [
-      "정식(1000)",
-      "짜장밥(pork included)",
-      "계란파국",
-      "군만두(pork included)",
-      "배추김치"
-    ],
-    "lunch": [
-      "정식(5500)",
-      "로제치킨까스(chicken included)"
-    ],
-    "dinner": null,
-    "weekday": 1
-  },
   "2026-05-13": {
     "date": "2026.05.13",
     "breakfast": [
@@ -101,5 +85,19 @@
     ],
     "dinner": null,
     "weekday": 0
+  },
+  "2026-05-19": {
+    "date": "2026.05.19",
+    "breakfast": null,
+    "lunch": [
+      "정식(6000)",
+      "육개장(beef included)",
+      "고추메추리알조림",
+      "햄겨자채(pork included)",
+      "새송이버섯야채볶음",
+      "깍두기"
+    ],
+    "dinner": null,
+    "weekday": 1
   }
 }
