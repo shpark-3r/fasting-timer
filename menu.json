@@ -1,23 +1,4 @@
 {
-  "2026-05-13": {
-    "date": "2026.05.13",
-    "breakfast": [
-      "정식(1000)",
-      "오징어덮밥",
-      "미역된장국",
-      "요쿠르트",
-      "단무지"
-    ],
-    "lunch": [
-      "정식(5500)",
-      "순살감자탕(pork included)",
-      "어묵볶음",
-      "요쿠르트",
-      "깍두기"
-    ],
-    "dinner": null,
-    "weekday": 2
-  },
   "2026-05-14": {
     "date": "2026.05.14",
     "breakfast": [
@@ -76,12 +57,9 @@
     "date": "2026.05.18",
     "breakfast": null,
     "lunch": [
-      "정식(6000)",
-      "콩나물밥/양념간장(beef included)",
-      "우렁된장찌개",
-      "돈불고기(pork included)",
-      "청양풍볶음우동",
-      "배추김치"
+      "정식(4000)",
+      "날치알김치비빔밥",
+      "함박스테이크(pork included)"
     ],
     "dinner": null,
     "weekday": 0
@@ -90,14 +68,22 @@
     "date": "2026.05.19",
     "breakfast": null,
     "lunch": [
-      "정식(6000)",
-      "육개장(beef included)",
-      "고추메추리알조림",
-      "햄겨자채(pork included)",
-      "새송이버섯야채볶음",
-      "깍두기"
+      "정식(4000)",
+      "돈코츠라멘(pork included)",
+      "닭꼬치구이(chicken included)"
     ],
     "dinner": null,
     "weekday": 1
+  },
+  "2026-05-20": {
+    "date": "2026.05.20",
+    "breakfast": null,
+    "lunch": [
+      "정식(null)",
+      "제육야채덮밥(pork included)",
+      "닭다리오븐구이(데리마요소스)(chicken included)"
+    ],
+    "dinner": null,
+    "weekday": 2
   }
 }
