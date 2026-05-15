@@ -1,24 +1,4 @@
 {
-  "2026-05-15": {
-    "date": "2026.05.15",
-    "breakfast": [
-      "정식(1000)",
-      "햄야채볶음밥(pork included)",
-      "맑은우동국물",
-      "새우카츠",
-      "깍두기"
-    ],
-    "lunch": [
-      "정식(4500)",
-      "치즈닭갈비덮밥(chicken included)",
-      "맑은우동국물",
-      "허니버터감자튀김",
-      "요쿠르트",
-      "단무지"
-    ],
-    "dinner": null,
-    "weekday": 4
-  },
   "2026-05-16": {
     "date": "2026.05.16",
     "breakfast": null,
@@ -35,46 +15,89 @@
   },
   "2026-05-18": {
     "date": "2026.05.18",
-    "breakfast": null,
+    "breakfast": [
+      "정식(1000)",
+      "함박스테이크(pork included)",
+      "하이라이스(pork included)"
+    ],
     "lunch": [
-      "정식(4000)",
-      "날치알김치비빔밥",
-      "함박스테이크(pork included)"
+      "정식(4500)",
+      "부대찌개(pork included)",
+      "미니돈까스(pork included)",
+      "도시락김",
+      "깍두기"
     ],
     "dinner": null,
     "weekday": 0
   },
   "2026-05-19": {
     "date": "2026.05.19",
-    "breakfast": null,
+    "breakfast": [
+      "정식(1000)",
+      "삼계닭죽(chicken included)",
+      "메추리알장조림",
+      "우리쌀씨리얼",
+      "우유",
+      "깍두기"
+    ],
     "lunch": [
-      "정식(4000)",
-      "돈코츠라멘(pork included)",
-      "닭꼬치구이(chicken included)"
+      "정식(4500)",
+      "순살돈까스/소스"
     ],
     "dinner": null,
     "weekday": 1
   },
   "2026-05-20": {
     "date": "2026.05.20",
-    "breakfast": null,
+    "breakfast": [
+      "정식(1000)",
+      "해물볶음밥",
+      "유부된장국",
+      "닭강정(chicken included)",
+      "깍두기"
+    ],
     "lunch": [
-      "정식(null)",
+      "정식(4500)",
       "제육야채덮밥(pork included)",
-      "닭다리오븐구이(데리마요소스)(chicken included)"
+      "맑은우동국물",
+      "만두탕수(pork included)",
+      "요쿠르트",
+      "깍두기"
     ],
     "dinner": null,
     "weekday": 2
   },
   "2026-05-21": {
     "date": "2026.05.21",
-    "breakfast": null,
+    "breakfast": [
+      "정식(1000)",
+      "소고기무우국(beef included)",
+      "돈김치볶음(pork included)",
+      "연두부&양념장",
+      "깍두기"
+    ],
     "lunch": [
-      "정식(4000)",
-      "반계탕(chicken included)",
-      "갈비만두(pork included)"
+      "정식(4500)",
+      "날치알새싹비빔밥",
+      "맑은우동국물",
+      "뿌링핫도그(pork included)",
+      "요쿠르트",
+      "배추김치"
     ],
     "dinner": null,
     "weekday": 3
+  },
+  "2026-05-22": {
+    "date": "2026.05.22",
+    "breakfast": [
+      "정식(1000)",
+      "효뜨 돼지고기덮밥(pork included)"
+    ],
+    "lunch": [
+      "정식(4500)",
+      "냉모밀국수"
+    ],
+    "dinner": null,
+    "weekday": 4
   }
 }
