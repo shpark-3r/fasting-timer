@@ -1,21 +1,4 @@
 {
-  "2026-05-18": {
-    "date": "2026.05.18",
-    "breakfast": [
-      "정식(1000)",
-      "함박스테이크(pork included)",
-      "하이라이스(pork included)"
-    ],
-    "lunch": [
-      "정식(4500)",
-      "부대찌개(pork included)",
-      "미니돈까스(pork included)",
-      "도시락김",
-      "깍두기"
-    ],
-    "dinner": null,
-    "weekday": 0
-  },
   "2026-05-19": {
     "date": "2026.05.19",
     "breakfast": [
@@ -99,5 +82,12 @@
     "lunch": null,
     "dinner": null,
     "weekday": 6
+  },
+  "2026-05-25": {
+    "date": "2026.05.25",
+    "breakfast": null,
+    "lunch": null,
+    "dinner": null,
+    "weekday": 0
   }
 }
