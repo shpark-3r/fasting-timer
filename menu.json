@@ -1,21 +1,4 @@
 {
-  "2026-05-19": {
-    "date": "2026.05.19",
-    "breakfast": [
-      "정식(1000)",
-      "삼계닭죽(chicken included)",
-      "메추리알장조림",
-      "우리쌀씨리얼",
-      "우유",
-      "깍두기"
-    ],
-    "lunch": [
-      "정식(4500)",
-      "순살돈까스/소스"
-    ],
-    "dinner": null,
-    "weekday": 1
-  },
   "2026-05-20": {
     "date": "2026.05.20",
     "breakfast": [
@@ -89,5 +72,20 @@
     "lunch": null,
     "dinner": null,
     "weekday": 0
+  },
+  "2026-05-26": {
+    "date": "2026.05.26",
+    "breakfast": null,
+    "lunch": [
+      "정식(6000)",
+      "바지락순두부찌개",
+      "들깨백불고기(pork included)",
+      "비엔나브로콜리볶음(pork included)",
+      "도토리묵/양념장",
+      "건파래무침",
+      "깍두기"
+    ],
+    "dinner": null,
+    "weekday": 1
   }
 }
