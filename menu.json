@@ -1,20 +1,4 @@
 {
-  "2026-05-27": {
-    "date": "2026.05.27",
-    "breakfast": [
-      "정식(1000)",
-      "닭갈비볶음밥(chicken included)",
-      "유부된장국",
-      "요쿠르트",
-      "단무지"
-    ],
-    "lunch": [
-      "정식(5500)",
-      "칠리치킨까스(chicken included)"
-    ],
-    "dinner": null,
-    "weekday": 2
-  },
   "2026-05-28": {
     "date": "2026.05.28",
     "breakfast": [
@@ -66,15 +50,30 @@
   "2026-06-01": {
     "date": "2026.06.01",
     "breakfast": null,
-    "lunch": null,
+    "lunch": [
+      "정식(4000)",
+      "돈까스(pork included)",
+      "떡볶이"
+    ],
     "dinner": null,
     "weekday": 0
   },
   "2026-06-02": {
     "date": "2026.06.02",
     "breakfast": null,
-    "lunch": null,
+    "lunch": [
+      "정식(4000)",
+      "김치말이국수",
+      "함박스테이크(pork included)"
+    ],
     "dinner": null,
     "weekday": 1
+  },
+  "2026-06-03": {
+    "date": "2026.06.03",
+    "breakfast": null,
+    "lunch": null,
+    "dinner": null,
+    "weekday": 2
   }
 }
