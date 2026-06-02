@@ -1,24 +1,4 @@
 {
-  "2026-06-02": {
-    "date": "2026.06.02",
-    "breakfast": [
-      "정식(1000)",
-      "삼계닭죽(chicken included)",
-      "메추리알장조림",
-      "우리쌀씨리얼",
-      "떠먹는 요거트",
-      "깍두기"
-    ],
-    "lunch": [
-      "정식(5500)",
-      "순살감자탕(pork included)",
-      "어묵볶음",
-      "요쿠르트",
-      "깍두기"
-    ],
-    "dinner": null,
-    "weekday": 1
-  },
   "2026-06-03": {
     "date": "2026.06.03",
     "breakfast": null,
@@ -82,5 +62,12 @@
     "lunch": null,
     "dinner": null,
     "weekday": 0
+  },
+  "2026-06-09": {
+    "date": "2026.06.09",
+    "breakfast": null,
+    "lunch": null,
+    "dinner": null,
+    "weekday": 1
   }
 }
