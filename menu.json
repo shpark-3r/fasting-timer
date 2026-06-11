@@ -1,28 +1,4 @@
 {
-  "2026-06-11": {
-    "date": "2026.06.11",
-    "breakfast": [
-      "정식(1000)",
-      "육개장(beef included)",
-      "연두부&양념장",
-      "깍두기"
-    ],
-    "lunch": [
-      "정식(4500)",
-      "칠리치킨까스(chicken included)",
-      "스프",
-      "양배추샐러드",
-      "배추김치"
-    ],
-    "dinner": [
-      "정식(1000)",
-      "닭갈비볶음밥(chicken included)",
-      "요쿠르트",
-      "맑은미역국",
-      "단무지"
-    ],
-    "weekday": 3
-  },
   "2026-06-12": {
     "date": "2026.06.12",
     "breakfast": [
@@ -59,22 +35,45 @@
   "2026-06-15": {
     "date": "2026.06.15",
     "breakfast": null,
-    "lunch": null,
+    "lunch": [
+      "정식(4000)",
+      "계란볶음밥&짜장소스(pork included)",
+      "슈프림닭강정(chicken included)"
+    ],
     "dinner": null,
     "weekday": 0
   },
   "2026-06-16": {
     "date": "2026.06.16",
     "breakfast": null,
-    "lunch": null,
+    "lunch": [
+      "정식(4000)",
+      "튀김냉우동",
+      "치킨텐더샐러드(chicken included)"
+    ],
     "dinner": null,
     "weekday": 1
   },
   "2026-06-17": {
     "date": "2026.06.17",
     "breakfast": null,
-    "lunch": null,
+    "lunch": [
+      "정식(4000)",
+      "제육야채덮밥(pork included)",
+      "김떡만강정(pork included)"
+    ],
     "dinner": null,
     "weekday": 2
+  },
+  "2026-06-18": {
+    "date": "2026.06.18",
+    "breakfast": null,
+    "lunch": [
+      "정식(4000)",
+      "순살감자탕(pork included)",
+      "함박스테이크(pork included)"
+    ],
+    "dinner": null,
+    "weekday": 3
   }
 }
