@@ -1,11 +1,4 @@
 {
-  "2026-06-13": {
-    "date": "2026.06.13",
-    "breakfast": null,
-    "lunch": null,
-    "dinner": null,
-    "weekday": 5
-  },
   "2026-06-14": {
     "date": "2026.06.14",
     "breakfast": null,
@@ -15,42 +8,103 @@
   },
   "2026-06-15": {
     "date": "2026.06.15",
-    "breakfast": null,
-    "lunch": null,
+    "breakfast": [
+      "정식(1000)",
+      "소고기야채죽(beef included)",
+      "메추리알장조림",
+      "우리쌀씨리얼",
+      "우유",
+      "깍두기"
+    ],
+    "lunch": [
+      "정식(4500)",
+      "제육야채덮밥(pork included)",
+      "맑은우동국물",
+      "만두튀김/초간장(pork included)",
+      "요쿠르트",
+      "배추김치"
+    ],
     "dinner": null,
-    "weekday": 0,
-    "error": "HTTPSConnectionPool(host='mobileadmin.cnu.ac.kr', port=443): Max retries exceeded with url: /food/index.jsp?searchYmd=2026.06.15&searchLang=OCL04.10&searchView=cafeteria&searchCafeteria=OCL03.02&Language_gb=OCL04.10 (Caused by ConnectTimeoutError(<HTTPSConnection(host='mobileadmin.cnu.ac.kr', port=443) at 0x7f94217884d0>, 'Connection to mobileadmin.cnu.ac.kr timed out. (connect timeout=10)'))"
+    "weekday": 0
   },
   "2026-06-16": {
     "date": "2026.06.16",
-    "breakfast": null,
-    "lunch": null,
+    "breakfast": [
+      "정식(1000)",
+      "하이라이스(pork included)",
+      "누드소세지(pork included)",
+      "맑은우동국물",
+      "배추김치"
+    ],
+    "lunch": [
+      "정식(4500)",
+      "꼬치어묵우동",
+      "새우튀김",
+      "참치마요주먹밥",
+      "단무지"
+    ],
     "dinner": null,
-    "weekday": 1,
-    "error": "HTTPSConnectionPool(host='mobileadmin.cnu.ac.kr', port=443): Max retries exceeded with url: /food/index.jsp?searchYmd=2026.06.16&searchLang=OCL04.10&searchView=cafeteria&searchCafeteria=OCL03.02&Language_gb=OCL04.10 (Caused by ConnectTimeoutError(<HTTPSConnection(host='mobileadmin.cnu.ac.kr', port=443) at 0x7f942178a190>, 'Connection to mobileadmin.cnu.ac.kr timed out. (connect timeout=10)'))"
+    "weekday": 1
   },
   "2026-06-17": {
     "date": "2026.06.17",
-    "breakfast": null,
-    "lunch": null,
+    "breakfast": [
+      "정식(1000)",
+      "참치김치덮밥",
+      "유부된장국",
+      "고구마맛탕",
+      "단무지"
+    ],
+    "lunch": [
+      "정식(4500)",
+      "목살필라프&계란후라이(pork included)",
+      "맑은우동국물",
+      "쥬스",
+      "배추김치"
+    ],
     "dinner": null,
-    "weekday": 2,
-    "error": "HTTPSConnectionPool(host='mobileadmin.cnu.ac.kr', port=443): Max retries exceeded with url: /food/index.jsp?searchYmd=2026.06.17&searchLang=OCL04.10&searchView=cafeteria&searchCafeteria=OCL03.02&Language_gb=OCL04.10 (Caused by ConnectTimeoutError(<HTTPSConnection(host='mobileadmin.cnu.ac.kr', port=443) at 0x7f942178bdd0>, 'Connection to mobileadmin.cnu.ac.kr timed out. (connect timeout=10)'))"
+    "weekday": 2
   },
   "2026-06-18": {
     "date": "2026.06.18",
-    "breakfast": null,
-    "lunch": null,
+    "breakfast": [
+      "정식(1000)",
+      "감자다시마국",
+      "잡채(pork included)",
+      "연두부&양념장",
+      "배추김치"
+    ],
+    "lunch": [
+      "정식(4500)",
+      "부대찌개(pork included)",
+      "미니돈까스(pork included)",
+      "도시락김",
+      "깍두기"
+    ],
     "dinner": null,
-    "weekday": 3,
-    "error": "HTTPSConnectionPool(host='mobileadmin.cnu.ac.kr', port=443): Max retries exceeded with url: /food/index.jsp?searchYmd=2026.06.18&searchLang=OCL04.10&searchView=cafeteria&searchCafeteria=OCL03.02&Language_gb=OCL04.10 (Caused by ConnectTimeoutError(<HTTPSConnection(host='mobileadmin.cnu.ac.kr', port=443) at 0x7f9421799a90>, 'Connection to mobileadmin.cnu.ac.kr timed out. (connect timeout=10)'))"
+    "weekday": 3
   },
   "2026-06-19": {
     "date": "2026.06.19",
+    "breakfast": [
+      "정식(1000)",
+      "소고기볶음밥(beef included)",
+      "맑은우동국물",
+      "만두강정(pork included)",
+      "깍두기"
+    ],
+    "lunch": [
+      "정식(5500)",
+      "고구마치즈돈까스(pork included)"
+    ],
+    "dinner": null,
+    "weekday": 4
+  },
+  "2026-06-20": {
+    "date": "2026.06.20",
     "breakfast": null,
     "lunch": null,
     "dinner": null,
-    "weekday": 4,
-    "error": "HTTPSConnectionPool(host='mobileadmin.cnu.ac.kr', port=443): Max retries exceeded with url: /food/index.jsp?searchYmd=2026.06.19&searchLang=OCL04.10&searchView=cafeteria&searchCafeteria=OCL03.02&Language_gb=OCL04.10 (Caused by ConnectTimeoutError(<HTTPSConnection(host='mobileadmin.cnu.ac.kr', port=443) at 0x7f942179b710>, 'Connection to mobileadmin.cnu.ac.kr timed out. (connect timeout=10)'))"
+    "weekday": 5
   }
 }
