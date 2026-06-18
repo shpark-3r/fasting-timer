@@ -1,23 +1,4 @@
 {
-  "2026-06-18": {
-    "date": "2026.06.18",
-    "breakfast": [
-      "정식(1000)",
-      "감자다시마국",
-      "잡채(pork included)",
-      "연두부&양념장",
-      "배추김치"
-    ],
-    "lunch": [
-      "정식(4500)",
-      "부대찌개(pork included)",
-      "미니돈까스(pork included)",
-      "도시락김",
-      "깍두기"
-    ],
-    "dinner": null,
-    "weekday": 3
-  },
   "2026-06-19": {
     "date": "2026.06.19",
     "breakfast": [
@@ -77,5 +58,15 @@
     ],
     "dinner": null,
     "weekday": 2
+  },
+  "2026-06-25": {
+    "date": "2026.06.25",
+    "breakfast": null,
+    "lunch": [
+      "정식(null)",
+      "운영중단(내부공사)"
+    ],
+    "dinner": null,
+    "weekday": 3
   }
 }
