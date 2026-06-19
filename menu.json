@@ -1,20 +1,4 @@
 {
-  "2026-06-19": {
-    "date": "2026.06.19",
-    "breakfast": [
-      "정식(1000)",
-      "소고기볶음밥(beef included)",
-      "맑은우동국물",
-      "만두강정(pork included)",
-      "깍두기"
-    ],
-    "lunch": [
-      "정식(5500)",
-      "고구마치즈돈까스(pork included)"
-    ],
-    "dinner": null,
-    "weekday": 4
-  },
   "2026-06-20": {
     "date": "2026.06.20",
     "breakfast": null,
@@ -68,5 +52,15 @@
     ],
     "dinner": null,
     "weekday": 3
+  },
+  "2026-06-26": {
+    "date": "2026.06.26",
+    "breakfast": null,
+    "lunch": [
+      "정식(null)",
+      "운영중단(내부공사)"
+    ],
+    "dinner": null,
+    "weekday": 4
   }
 }
