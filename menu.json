@@ -1,14 +1,4 @@
 {
-  "2026-06-26": {
-    "date": "2026.06.26",
-    "breakfast": null,
-    "lunch": [
-      "정식(null)",
-      "운영중단(내부공사)"
-    ],
-    "dinner": null,
-    "weekday": 4
-  },
   "2026-06-27": {
     "date": "2026.06.27",
     "breakfast": null,
@@ -62,5 +52,15 @@
     ],
     "dinner": null,
     "weekday": 3
+  },
+  "2026-07-03": {
+    "date": "2026.07.03",
+    "breakfast": null,
+    "lunch": [
+      "정식(null)",
+      "운영중단(내부공사)"
+    ],
+    "dinner": null,
+    "weekday": 4
   }
 }
