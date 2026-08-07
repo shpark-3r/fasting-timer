@@ -1,12 +1,4 @@
 {
-  "2026-08-07": {
-    "date": "2026.08.07",
-    "breakfast": null,
-    "lunch": null,
-    "dinner": null,
-    "weekday": 4,
-    "error": "HTTPSConnectionPool(host='mobileadmin.cnu.ac.kr', port=443): Max retries exceeded with url: /food/index.jsp?searchYmd=2026.08.07&searchLang=OCL04.10&searchView=cafeteria&searchCafeteria=OCL03.02&Language_gb=OCL04.10 (Caused by ConnectTimeoutError(<HTTPSConnection(host='mobileadmin.cnu.ac.kr', port=443) at 0x7fe62eb80f90>, 'Connection to mobileadmin.cnu.ac.kr timed out. (connect timeout=10)'))"
-  },
   "2026-08-08": {
     "date": "2026.08.08",
     "breakfast": null,
@@ -24,33 +16,51 @@
   "2026-08-10": {
     "date": "2026.08.10",
     "breakfast": null,
-    "lunch": null,
+    "lunch": [
+      "정식(null)",
+      "운영중단(내부공사)"
+    ],
     "dinner": null,
-    "weekday": 0,
-    "error": "HTTPSConnectionPool(host='mobileadmin.cnu.ac.kr', port=443): Max retries exceeded with url: /food/index.jsp?searchYmd=2026.08.10&searchLang=OCL04.10&searchView=cafeteria&searchCafeteria=OCL03.02&Language_gb=OCL04.10 (Caused by ConnectTimeoutError(<HTTPSConnection(host='mobileadmin.cnu.ac.kr', port=443) at 0x7fe62eb82bd0>, 'Connection to mobileadmin.cnu.ac.kr timed out. (connect timeout=10)'))"
+    "weekday": 0
   },
   "2026-08-11": {
     "date": "2026.08.11",
     "breakfast": null,
-    "lunch": null,
+    "lunch": [
+      "정식(null)",
+      "운영중단(내부공사)"
+    ],
     "dinner": null,
-    "weekday": 1,
-    "error": "HTTPSConnectionPool(host='mobileadmin.cnu.ac.kr', port=443): Max retries exceeded with url: /food/index.jsp?searchYmd=2026.08.11&searchLang=OCL04.10&searchView=cafeteria&searchCafeteria=OCL03.02&Language_gb=OCL04.10 (Caused by ConnectTimeoutError(<HTTPSConnection(host='mobileadmin.cnu.ac.kr', port=443) at 0x7fe62eb94890>, 'Connection to mobileadmin.cnu.ac.kr timed out. (connect timeout=10)'))"
+    "weekday": 1
   },
   "2026-08-12": {
     "date": "2026.08.12",
     "breakfast": null,
-    "lunch": null,
+    "lunch": [
+      "정식(null)",
+      "운영중단(내부공사)"
+    ],
     "dinner": null,
-    "weekday": 2,
-    "error": "HTTPSConnectionPool(host='mobileadmin.cnu.ac.kr', port=443): Max retries exceeded with url: /food/index.jsp?searchYmd=2026.08.12&searchLang=OCL04.10&searchView=cafeteria&searchCafeteria=OCL03.02&Language_gb=OCL04.10 (Caused by ConnectTimeoutError(<HTTPSConnection(host='mobileadmin.cnu.ac.kr', port=443) at 0x7fe62eb96910>, 'Connection to mobileadmin.cnu.ac.kr timed out. (connect timeout=10)'))"
+    "weekday": 2
   },
   "2026-08-13": {
     "date": "2026.08.13",
     "breakfast": null,
-    "lunch": null,
+    "lunch": [
+      "정식(null)",
+      "운영중단(내부공사)"
+    ],
     "dinner": null,
-    "weekday": 3,
-    "error": "HTTPSConnectionPool(host='mobileadmin.cnu.ac.kr', port=443): Max retries exceeded with url: /food/index.jsp?searchYmd=2026.08.13&searchLang=OCL04.10&searchView=cafeteria&searchCafeteria=OCL03.02&Language_gb=OCL04.10 (Caused by ConnectTimeoutError(<HTTPSConnection(host='mobileadmin.cnu.ac.kr', port=443) at 0x7fe62eba09d0>, 'Connection to mobileadmin.cnu.ac.kr timed out. (connect timeout=10)'))"
+    "weekday": 3
+  },
+  "2026-08-14": {
+    "date": "2026.08.14",
+    "breakfast": null,
+    "lunch": [
+      "정식(null)",
+      "운영중단(내부공사)"
+    ],
+    "dinner": null,
+    "weekday": 4
   }
 }
