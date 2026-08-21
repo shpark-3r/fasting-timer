@@ -1,14 +1,4 @@
 {
-  "2026-08-21": {
-    "date": "2026.08.21",
-    "breakfast": null,
-    "lunch": [
-      "정식(null)",
-      "운영중단(내부공사)"
-    ],
-    "dinner": null,
-    "weekday": 4
-  },
   "2026-08-22": {
     "date": "2026.08.22",
     "breakfast": null,
@@ -62,5 +52,15 @@
     ],
     "dinner": null,
     "weekday": 3
+  },
+  "2026-08-28": {
+    "date": "2026.08.28",
+    "breakfast": null,
+    "lunch": [
+      "정식(null)",
+      "운영중단(내부공사)"
+    ],
+    "dinner": null,
+    "weekday": 4
   }
 }
