@@ -1,14 +1,4 @@
 {
-  "2026-08-25": {
-    "date": "2026.08.25",
-    "breakfast": null,
-    "lunch": [
-      "정식(null)",
-      "운영중단(내부공사)"
-    ],
-    "dinner": null,
-    "weekday": 1
-  },
   "2026-08-26": {
     "date": "2026.08.26",
     "breakfast": null,
@@ -62,5 +52,19 @@
     ],
     "dinner": null,
     "weekday": 0
+  },
+  "2026-09-01": {
+    "date": "2026.09.01",
+    "breakfast": null,
+    "lunch": [
+      "정식(6000)",
+      "고구마치즈돈까스(pork included)",
+      "맑은우동국물",
+      "토마토푸실리볶음",
+      "파인애플샐러드",
+      "배추김치"
+    ],
+    "dinner": null,
+    "weekday": 1
   }
 }
