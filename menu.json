@@ -1,14 +1,4 @@
 {
-  "2026-08-27": {
-    "date": "2026.08.27",
-    "breakfast": null,
-    "lunch": [
-      "정식(null)",
-      "운영중단(내부공사)"
-    ],
-    "dinner": null,
-    "weekday": 3
-  },
   "2026-08-28": {
     "date": "2026.08.28",
     "breakfast": null,
@@ -45,30 +35,54 @@
   },
   "2026-09-01": {
     "date": "2026.09.01",
-    "breakfast": null,
-    "lunch": [
-      "정식(6000)",
-      "고구마치즈돈까스(pork included)",
-      "맑은우동국물",
-      "토마토푸실리볶음",
-      "파인애플샐러드",
+    "breakfast": [
+      "정식(null)",
+      "새우튀김카레라이스(pork included)",
+      "두부된장국",
       "배추김치"
+    ],
+    "lunch": [
+      "정식(4500)",
+      "부대찌개(pork included)",
+      "미니돈까스(pork included)",
+      "도시락김",
+      "깍두기"
     ],
     "dinner": null,
     "weekday": 1
   },
   "2026-09-02": {
     "date": "2026.09.02",
-    "breakfast": null,
+    "breakfast": [
+      "정식(null)",
+      "소고기해장국(beef included)",
+      "요쿠르트",
+      "깍두기"
+    ],
     "lunch": [
-      "정식(6000)",
-      "일식새우커리",
-      "유부된장국",
-      "닭강정(chicken included)",
-      "샐러드파스타",
-      "배추김치"
+      "정식(4500)",
+      "치즈닭갈비덮밥(chicken included)",
+      "맑은우동국물",
+      "허니버터감자튀김",
+      "요쿠르트",
+      "단무지"
     ],
     "dinner": null,
     "weekday": 2
+  },
+  "2026-09-03": {
+    "date": "2026.09.03",
+    "breakfast": [
+      "정식(null)",
+      "함박김치볶음밥(pork&beef included)",
+      "맑은우동국물",
+      "단무지"
+    ],
+    "lunch": [
+      "정식(5500)",
+      "고구마치즈돈까스(pork included)"
+    ],
+    "dinner": null,
+    "weekday": 3
   }
 }
