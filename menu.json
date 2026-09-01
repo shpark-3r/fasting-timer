@@ -1,73 +1,27 @@
 {
-  "2026-09-01": {
-    "date": "2026.09.01",
-    "breakfast": [
-      "정식(null)",
-      "새우튀김카레라이스(pork included)",
-      "두부된장국",
-      "배추김치"
-    ],
-    "lunch": [
-      "정식(4500)",
-      "부대찌개(pork included)",
-      "미니돈까스(pork included)",
-      "도시락김",
-      "깍두기"
-    ],
-    "dinner": null,
-    "weekday": 1
-  },
   "2026-09-02": {
     "date": "2026.09.02",
-    "breakfast": [
-      "정식(null)",
-      "소고기해장국(beef included)",
-      "요쿠르트",
-      "깍두기"
-    ],
-    "lunch": [
-      "정식(4500)",
-      "치즈닭갈비덮밥(chicken included)",
-      "맑은우동국물",
-      "허니버터감자튀김",
-      "요쿠르트",
-      "단무지"
-    ],
+    "breakfast": null,
+    "lunch": null,
     "dinner": null,
-    "weekday": 2
+    "weekday": 2,
+    "error": "HTTPSConnectionPool(host='mobileadmin.cnu.ac.kr', port=443): Read timed out. (read timeout=10)"
   },
   "2026-09-03": {
     "date": "2026.09.03",
-    "breakfast": [
-      "정식(null)",
-      "함박김치볶음밥(pork&beef included)",
-      "맑은우동국물",
-      "단무지"
-    ],
-    "lunch": [
-      "정식(5500)",
-      "고구마치즈돈까스(pork included)"
-    ],
+    "breakfast": null,
+    "lunch": null,
     "dinner": null,
-    "weekday": 3
+    "weekday": 3,
+    "error": "HTTPSConnectionPool(host='mobileadmin.cnu.ac.kr', port=443): Read timed out. (read timeout=10)"
   },
   "2026-09-04": {
     "date": "2026.09.04",
-    "breakfast": [
-      "정식(1000)",
-      "참치야채죽",
-      "새송이메추리알조림",
-      "우리쌀씨리얼",
-      "떠먹는 요거트",
-      "깍두기"
-    ],
-    "lunch": [
-      "정식(4000)",
-      "새우튀김우동",
-      "맛쵸킹치킨(chicken included)"
-    ],
+    "breakfast": null,
+    "lunch": null,
     "dinner": null,
-    "weekday": 4
+    "weekday": 4,
+    "error": "HTTPSConnectionPool(host='mobileadmin.cnu.ac.kr', port=443): Read timed out. (read timeout=10)"
   },
   "2026-09-05": {
     "date": "2026.09.05",
@@ -88,6 +42,15 @@
     "breakfast": null,
     "lunch": null,
     "dinner": null,
-    "weekday": 0
+    "weekday": 0,
+    "error": "HTTPSConnectionPool(host='mobileadmin.cnu.ac.kr', port=443): Read timed out. (read timeout=10)"
+  },
+  "2026-09-08": {
+    "date": "2026.09.08",
+    "breakfast": null,
+    "lunch": null,
+    "dinner": null,
+    "weekday": 1,
+    "error": "HTTPSConnectionPool(host='mobileadmin.cnu.ac.kr', port=443): Read timed out. (read timeout=10)"
   }
 }
