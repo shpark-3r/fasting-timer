@@ -1,19 +1,21 @@
 {
-  "2026-09-03": {
-    "date": "2026.09.03",
-    "breakfast": null,
-    "lunch": null,
-    "dinner": null,
-    "weekday": 3,
-    "error": "HTTPSConnectionPool(host='mobileadmin.cnu.ac.kr', port=443): Read timed out. (read timeout=10)"
-  },
   "2026-09-04": {
     "date": "2026.09.04",
-    "breakfast": null,
-    "lunch": null,
+    "breakfast": [
+      "정식(1000)",
+      "참치야채죽",
+      "새송이메추리알조림",
+      "우리쌀씨리얼",
+      "떠먹는 요거트",
+      "깍두기"
+    ],
+    "lunch": [
+      "정식(4000)",
+      "새우튀김우동",
+      "맛쵸킹치킨(chicken included)"
+    ],
     "dinner": null,
-    "weekday": 4,
-    "error": "HTTPSConnectionPool(host='mobileadmin.cnu.ac.kr', port=443): Read timed out. (read timeout=10)"
+    "weekday": 4
   },
   "2026-09-05": {
     "date": "2026.09.05",
@@ -32,25 +34,57 @@
   "2026-09-07": {
     "date": "2026.09.07",
     "breakfast": null,
-    "lunch": null,
+    "lunch": [
+      "정식(6000)",
+      "제육김치덮밥(pork included)",
+      "유부된장국",
+      "생선까스",
+      "짜장볶음우동(pork included)",
+      "단무지"
+    ],
     "dinner": null,
-    "weekday": 0,
-    "error": "HTTPSConnectionPool(host='mobileadmin.cnu.ac.kr', port=443): Read timed out. (read timeout=10)"
+    "weekday": 0
   },
   "2026-09-08": {
     "date": "2026.09.08",
     "breakfast": null,
-    "lunch": null,
+    "lunch": [
+      "정식(6000)",
+      "반계탕(chicken included)",
+      "쫄면무침",
+      "순대야채볶음",
+      "깍두기"
+    ],
     "dinner": null,
-    "weekday": 1,
-    "error": "HTTPSConnectionPool(host='mobileadmin.cnu.ac.kr', port=443): Read timed out. (read timeout=10)"
+    "weekday": 1
   },
   "2026-09-09": {
     "date": "2026.09.09",
     "breakfast": null,
-    "lunch": null,
+    "lunch": [
+      "정식(6000)",
+      "스팸마요덮밥(pork included)",
+      "맑은우동국물",
+      "떡볶이",
+      "타코야끼",
+      "배추김치"
+    ],
     "dinner": null,
-    "weekday": 2,
-    "error": "HTTPSConnectionPool(host='mobileadmin.cnu.ac.kr', port=443): Read timed out. (read timeout=10)"
+    "weekday": 2
+  },
+  "2026-09-10": {
+    "date": "2026.09.10",
+    "breakfast": null,
+    "lunch": [
+      "정식(6000)",
+      "참치김치찌개",
+      "돈불고기(pork included)",
+      "만두탕수(pork included)",
+      "카레소스",
+      "옛날소세지전",
+      "깍두기"
+    ],
+    "dinner": null,
+    "weekday": 3
   }
 }
