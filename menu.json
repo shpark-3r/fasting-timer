@@ -1,23 +1,4 @@
 {
-  "2026-09-16": {
-    "date": "2026.09.16",
-    "breakfast": [
-      "정식(1000)",
-      "닭갈비볶음밥(chicken included)",
-      "맑은우동국물",
-      "요쿠르트",
-      "단무지"
-    ],
-    "lunch": [
-      "정식(4500)",
-      "손만두국(pork included)",
-      "비엔나케찹조림(pork included)",
-      "도시락김",
-      "깍두기"
-    ],
-    "dinner": null,
-    "weekday": 2
-  },
   "2026-09-17": {
     "date": "2026.09.17",
     "breakfast": [
@@ -73,31 +54,54 @@
   },
   "2026-09-21": {
     "date": "2026.09.21",
-    "breakfast": null,
+    "breakfast": [
+      "정식(1000)",
+      "참치야채죽",
+      "메추리알장조림",
+      "우리쌀씨리얼",
+      "우유",
+      "깍두기"
+    ],
     "lunch": [
-      "정식(6000)",
-      "콩나물밥/양념간장(beef included)",
-      "두부된장국",
-      "바싹불고기육전(pork included)",
-      "떡잡채(beef included)",
-      "요구르트",
-      "배추김치"
+      "정식(4500)",
+      "부대찌개(pork included)",
+      "미니돈까스(pork included)",
+      "도시락김",
+      "깍두기"
     ],
     "dinner": null,
     "weekday": 0
   },
   "2026-09-22": {
     "date": "2026.09.22",
-    "breakfast": null,
+    "breakfast": [
+      "정식(1000)",
+      "참치김치덮밥",
+      "얼갈이된장국",
+      "고구마맛탕",
+      "단무지"
+    ],
     "lunch": [
-      "정식(6000)",
-      "순살감자탕(pork included)",
-      "만두유린기(pork included)",
-      "실곤약야채무침",
-      "온두부&양념장",
-      "깍두기"
+      "정식(5500)",
+      "고구마치즈돈까스(pork included)"
     ],
     "dinner": null,
     "weekday": 1
+  },
+  "2026-09-23": {
+    "date": "2026.09.23",
+    "breakfast": [
+      "정식(1000)",
+      "소고기볶음밥(beef included)",
+      "무된장국",
+      "춘권튀김",
+      "깍두기"
+    ],
+    "lunch": [
+      "정식(4500)",
+      "함박토마토파스타(pork included)"
+    ],
+    "dinner": null,
+    "weekday": 2
   }
 }
