@@ -1,0 +1,25 @@
+{
+  "start_date": "2026-03-21",
+  "start_weight": 107.7,
+  "scale_offset": {
+    "pooq": 0.0,
+    "atply": 0.8,
+    "unknown": 0.0
+  },
+  "thresholds": {
+    "noise": 0.8,
+    "rebound": 1.1,
+    "waterdrop": -1.0
+  },
+  "protein_target": 120,
+  "half_life_days": 5,
+  "restart": {
+    "active": true,
+    "pause_start": "2026-08-30",
+    "ceiling": 96.0,
+    "consecutive": 3,
+    "review_date": "2026-09-28",
+    "binge_limit": 2
+  },
+  "md_path": "C:\\Users\\Park\\.claude\\projects\\C--Users-Park-Documents-ClaudeCode-fasting-timer\\memory\\weight_log.md"
+}
