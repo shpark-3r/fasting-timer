@@ -1,24 +1,4 @@
 {
-  "2026-09-17": {
-    "date": "2026.09.17",
-    "breakfast": [
-      "정식(1000)",
-      "하이라이스(pork included)",
-      "함박스테이크(pork included)",
-      "맑은우동국물",
-      "배추김치"
-    ],
-    "lunch": [
-      "정식(4500)",
-      "안동찜닭덮밥(chicken included)",
-      "미역된장국",
-      "메밀전병",
-      "요쿠르트",
-      "배추김치"
-    ],
-    "dinner": null,
-    "weekday": 3
-  },
   "2026-09-18": {
     "date": "2026.09.18",
     "breakfast": [
@@ -103,5 +83,12 @@
     ],
     "dinner": null,
     "weekday": 2
+  },
+  "2026-09-24": {
+    "date": "2026.09.24",
+    "breakfast": null,
+    "lunch": null,
+    "dinner": null,
+    "weekday": 3
   }
 }
