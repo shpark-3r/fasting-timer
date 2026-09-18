@@ -1,23 +1,4 @@
 {
-  "2026-09-18": {
-    "date": "2026.09.18",
-    "breakfast": [
-      "정식(1000)",
-      "소고기무우국(beef included)",
-      "돈김치볶음(pork included)",
-      "연두부&양념장",
-      "깍두기"
-    ],
-    "lunch": [
-      "정식(5500)",
-      "매운차돌쌀국수(beef included)",
-      "후리가케주먹밥",
-      "춘권튀김",
-      "단무지"
-    ],
-    "dinner": null,
-    "weekday": 4
-  },
   "2026-09-19": {
     "date": "2026.09.19",
     "breakfast": null,
@@ -90,5 +71,12 @@
     "lunch": null,
     "dinner": null,
     "weekday": 3
+  },
+  "2026-09-25": {
+    "date": "2026.09.25",
+    "breakfast": null,
+    "lunch": null,
+    "dinner": null,
+    "weekday": 4
   }
 }
