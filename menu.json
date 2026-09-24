@@ -1,11 +1,4 @@
 {
-  "2026-09-24": {
-    "date": "2026.09.24",
-    "breakfast": null,
-    "lunch": null,
-    "dinner": null,
-    "weekday": 3
-  },
   "2026-09-25": {
     "date": "2026.09.25",
     "breakfast": null,
@@ -84,5 +77,21 @@
     ],
     "dinner": null,
     "weekday": 2
+  },
+  "2026-10-01": {
+    "date": "2026.10.01",
+    "breakfast": [
+      "정식(1000)",
+      "해물볶음밥",
+      "맑은우동국물",
+      "만두강정(pork included)",
+      "깍두기"
+    ],
+    "lunch": [
+      "정식(5500)",
+      "로제치킨까스(chicken included)"
+    ],
+    "dinner": null,
+    "weekday": 3
   }
 }
