@@ -1,11 +1,4 @@
 {
-  "2026-09-25": {
-    "date": "2026.09.25",
-    "breakfast": null,
-    "lunch": null,
-    "dinner": null,
-    "weekday": 4
-  },
   "2026-09-26": {
     "date": "2026.09.26",
     "breakfast": null,
@@ -93,5 +86,25 @@
     ],
     "dinner": null,
     "weekday": 3
+  },
+  "2026-10-02": {
+    "date": "2026.10.02",
+    "breakfast": [
+      "정식(1000)",
+      "어묵무국",
+      "고추마요떡갈비(pork included)",
+      "콩나물무침",
+      "배추김치"
+    ],
+    "lunch": [
+      "정식(4500)",
+      "날치알새싹비빔밥",
+      "유부된장국",
+      "뿌링핫도그(pork included)",
+      "요쿠르트",
+      "배추김치"
+    ],
+    "dinner": null,
+    "weekday": 4
   }
 }
