@@ -1,22 +1,4 @@
 {
-  "2026-09-29": {
-    "date": "2026.09.29",
-    "breakfast": [
-      "정식(1000)",
-      "새우튀김카레라이스(pork included)",
-      "유부된장국",
-      "배추김치"
-    ],
-    "lunch": [
-      "정식(5500)",
-      "순살감자탕(pork included)",
-      "어묵볶음",
-      "요쿠르트",
-      "깍두기"
-    ],
-    "dinner": null,
-    "weekday": 1
-  },
   "2026-09-30": {
     "date": "2026.09.30",
     "breakfast": [
@@ -94,5 +76,19 @@
     "lunch": null,
     "dinner": null,
     "weekday": 0
+  },
+  "2026-10-06": {
+    "date": "2026.10.06",
+    "breakfast": null,
+    "lunch": [
+      "정식(6000)",
+      "나가사키짬뽕",
+      "짜장소스(pork included)",
+      "탕수육(pork included)",
+      "쥬스",
+      "단무지"
+    ],
+    "dinner": null,
+    "weekday": 1
   }
 }
