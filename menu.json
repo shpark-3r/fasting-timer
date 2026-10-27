@@ -1,20 +1,4 @@
 {
-  "2026-10-26": {
-    "date": "2026.10.26",
-    "breakfast": [
-      "정식(1000)",
-      "참치김치찌개",
-      "새우카츠",
-      "요쿠르트",
-      "깍두기"
-    ],
-    "lunch": [
-      "정식(4500)",
-      "순살돈까스/소스"
-    ],
-    "dinner": null,
-    "weekday": 0
-  },
   "2026-10-27": {
     "date": "2026.10.27",
     "breakfast": [
@@ -106,5 +90,12 @@
     "lunch": null,
     "dinner": null,
     "weekday": 6
+  },
+  "2026-11-02": {
+    "date": "2026.11.02",
+    "breakfast": null,
+    "lunch": null,
+    "dinner": null,
+    "weekday": 0
   }
 }
