@@ -1,23 +1,4 @@
 {
-  "2026-10-28": {
-    "date": "2026.10.28",
-    "breakfast": [
-      "정식(1000)",
-      "왕떡볶이",
-      "어묵무국",
-      "김말이튀김",
-      "단무지"
-    ],
-    "lunch": [
-      "정식(5500)",
-      "닭다리백숙(chicken included)",
-      "메추리알장조림",
-      "요쿠르트",
-      "깍두기"
-    ],
-    "dinner": null,
-    "weekday": 2
-  },
   "2026-10-29": {
     "date": "2026.10.29",
     "breakfast": [
@@ -92,5 +73,16 @@
     ],
     "dinner": null,
     "weekday": 1
+  },
+  "2026-11-04": {
+    "date": "2026.11.04",
+    "breakfast": null,
+    "lunch": [
+      "정식(4000)",
+      "치즈쫄면순두부(pork included)",
+      "블랙돈까스(pork included)"
+    ],
+    "dinner": null,
+    "weekday": 2
   }
 }
