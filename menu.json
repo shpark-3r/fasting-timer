@@ -1,24 +1,4 @@
 {
-  "2026-10-29": {
-    "date": "2026.10.29",
-    "breakfast": [
-      "정식(1000)",
-      "하이라이스(pork included)",
-      "함박스테이크(pork included)",
-      "맑은우동국물",
-      "배추김치"
-    ],
-    "lunch": [
-      "정식(4500)",
-      "날치알새싹비빔밥",
-      "유부된장국",
-      "뿌링핫도그(pork included)",
-      "요쿠르트",
-      "배추김치"
-    ],
-    "dinner": null,
-    "weekday": 3
-  },
   "2026-10-30": {
     "date": "2026.10.30",
     "breakfast": [
@@ -54,35 +34,77 @@
   },
   "2026-11-02": {
     "date": "2026.11.02",
-    "breakfast": null,
+    "breakfast": [
+      "정식(1000)",
+      "참치야채죽",
+      "메추리알장조림",
+      "우리쌀씨리얼",
+      "우유",
+      "깍두기"
+    ],
     "lunch": [
-      "정식(4000)",
-      "순대돼지국밥(pork included)",
-      "손만두찜(pork included)"
+      "정식(4500)",
+      "제육야채덮밥(pork included)",
+      "맑은우동국물",
+      "만두튀김/초간장(pork included)",
+      "요쿠르트",
+      "깍두기"
     ],
     "dinner": null,
     "weekday": 0
   },
   "2026-11-03": {
     "date": "2026.11.03",
-    "breakfast": null,
+    "breakfast": [
+      "정식(1000)",
+      "짜장덮밥(pork included)",
+      "계란파국",
+      "군만두(pork included)",
+      "배추김치"
+    ],
     "lunch": [
-      "정식(4000)",
-      "제육야채덮밥(pork included)",
-      "핫도그(pork included)"
+      "정식(5500)",
+      "칠리치킨까스(chicken included)"
     ],
     "dinner": null,
     "weekday": 1
   },
   "2026-11-04": {
     "date": "2026.11.04",
-    "breakfast": null,
+    "breakfast": [
+      "정식(1000)",
+      "육개장(beef included)",
+      "연두부&양념장",
+      "깍두기"
+    ],
     "lunch": [
-      "정식(4000)",
-      "치즈쫄면순두부(pork included)",
-      "블랙돈까스(pork included)"
+      "정식(4500)",
+      "손만두국(pork included)",
+      "비엔나소세지볶음(pork included)",
+      "도시락김",
+      "깍두기"
     ],
     "dinner": null,
     "weekday": 2
+  },
+  "2026-11-05": {
+    "date": "2026.11.05",
+    "breakfast": [
+      "정식(1000)",
+      "맑은미역국",
+      "고추마요떡갈비(pork included)",
+      "콩나물무침",
+      "배추김치"
+    ],
+    "lunch": [
+      "정식(4500)",
+      "김치참치마요덮밥",
+      "맑은우동국물",
+      "닭강정(chicken included)",
+      "요쿠르트",
+      "깍두기"
+    ],
+    "dinner": null,
+    "weekday": 3
   }
 }
