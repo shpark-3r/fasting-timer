@@ -1,24 +1,4 @@
 {
-  "2026-11-10": {
-    "date": "2026.11.10",
-    "breakfast": [
-      "정식(1000)",
-      "소고기야채죽(beef included)",
-      "새송이메추리알조림",
-      "우리쌀씨리얼",
-      "우유",
-      "깍두기"
-    ],
-    "lunch": [
-      "정식(4500)",
-      "꼬치어묵우동",
-      "참치마요주먹밥",
-      "새우튀김",
-      "단무지"
-    ],
-    "dinner": null,
-    "weekday": 1
-  },
   "2026-11-11": {
     "date": "2026.11.11",
     "breakfast": [
@@ -93,5 +73,12 @@
     "lunch": null,
     "dinner": null,
     "weekday": 0
+  },
+  "2026-11-17": {
+    "date": "2026.11.17",
+    "breakfast": null,
+    "lunch": null,
+    "dinner": null,
+    "weekday": 1
   }
 }
