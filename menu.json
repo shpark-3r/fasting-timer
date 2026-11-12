@@ -1,23 +1,4 @@
 {
-  "2026-11-11": {
-    "date": "2026.11.11",
-    "breakfast": [
-      "정식(1000)",
-      "왕떡볶이",
-      "어묵무국",
-      "김말이튀김",
-      "단무지"
-    ],
-    "lunch": [
-      "정식(5500)",
-      "순살감자탕(pork included)",
-      "어묵볶음",
-      "요쿠르트",
-      "깍두기"
-    ],
-    "dinner": null,
-    "weekday": 2
-  },
   "2026-11-12": {
     "date": "2026.11.12",
     "breakfast": [
@@ -80,5 +61,12 @@
     "lunch": null,
     "dinner": null,
     "weekday": 1
+  },
+  "2026-11-18": {
+    "date": "2026.11.18",
+    "breakfast": null,
+    "lunch": null,
+    "dinner": null,
+    "weekday": 2
   }
 }
