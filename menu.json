@@ -1,19 +1,4 @@
 {
-  "2026-11-12": {
-    "date": "2026.11.12",
-    "breakfast": [
-      "정식(1000)",
-      "부대찌개(pork included)",
-      "도시락김",
-      "깍두기"
-    ],
-    "lunch": [
-      "정식(5500)",
-      "로제치킨까스(chicken included)"
-    ],
-    "dinner": null,
-    "weekday": 3
-  },
   "2026-11-13": {
     "date": "2026.11.13",
     "breakfast": [
@@ -50,23 +35,76 @@
   },
   "2026-11-16": {
     "date": "2026.11.16",
-    "breakfast": null,
-    "lunch": null,
+    "breakfast": [
+      "정식(1000)",
+      "참치김치덮밥",
+      "미역된장국",
+      "고구마맛탕",
+      "단무지"
+    ],
+    "lunch": [
+      "정식(4500)",
+      "치즈닭갈비덮밥(chicken included)",
+      "맑은우동국물",
+      "허니버터감자튀김",
+      "요쿠르트",
+      "깍두기"
+    ],
     "dinner": null,
     "weekday": 0
   },
   "2026-11-17": {
     "date": "2026.11.17",
-    "breakfast": null,
-    "lunch": null,
+    "breakfast": [
+      "정식(1000)",
+      "삼계닭죽(chicken included)",
+      "메추리알장조림",
+      "우리쌀씨리얼",
+      "우유",
+      "깍두기"
+    ],
+    "lunch": [
+      "정식(4500)",
+      "부대찌개(pork included)",
+      "명태코다리강정",
+      "도시락김",
+      "깍두기"
+    ],
     "dinner": null,
     "weekday": 1
   },
   "2026-11-18": {
     "date": "2026.11.18",
-    "breakfast": null,
-    "lunch": null,
+    "breakfast": [
+      "정식(1000)",
+      "새우튀김카레라이스(pork included)",
+      "유부된장국",
+      "배추김치"
+    ],
+    "lunch": [
+      "정식(5500)",
+      "매운차돌쌀국수(beef included)",
+      "후리가케주먹밥",
+      "춘권튀김",
+      "단무지"
+    ],
     "dinner": null,
     "weekday": 2
+  },
+  "2026-11-19": {
+    "date": "2026.11.19",
+    "breakfast": [
+      "정식(1000)",
+      "해물볶음밥",
+      "맑은우동국물",
+      "핫도그(pork included)",
+      "깍두기"
+    ],
+    "lunch": [
+      "정식(5500)",
+      "고구마치즈돈까스(pork included)"
+    ],
+    "dinner": null,
+    "weekday": 3
   }
 }
