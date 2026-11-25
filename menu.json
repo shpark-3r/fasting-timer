@@ -1,24 +1,4 @@
 {
-  "2026-11-24": {
-    "date": "2026.11.24",
-    "breakfast": [
-      "정식(1000)",
-      "해물야채죽",
-      "메추리알장조림",
-      "우리쌀씨리얼",
-      "우유",
-      "깍두기"
-    ],
-    "lunch": [
-      "정식(5500)",
-      "고기국수(pork included)",
-      "후리가케주먹밥",
-      "메밀전병",
-      "배추김치"
-    ],
-    "dinner": null,
-    "weekday": 1
-  },
   "2026-11-25": {
     "date": "2026.11.25",
     "breakfast": [
@@ -91,5 +71,12 @@
     "lunch": null,
     "dinner": null,
     "weekday": 0
+  },
+  "2026-12-01": {
+    "date": "2026.12.01",
+    "breakfast": null,
+    "lunch": null,
+    "dinner": null,
+    "weekday": 1
   }
 }
