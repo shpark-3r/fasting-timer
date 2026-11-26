@@ -1,22 +1,4 @@
 {
-  "2026-11-25": {
-    "date": "2026.11.25",
-    "breakfast": [
-      "정식(1000)",
-      "오징어덮밥",
-      "맑은우동국물",
-      "배추김치"
-    ],
-    "lunch": [
-      "정식(4500)",
-      "만두육개장(pork included)",
-      "고추마요떡갈비(pork included)",
-      "요쿠르트",
-      "깍두기"
-    ],
-    "dinner": null,
-    "weekday": 2
-  },
   "2026-11-26": {
     "date": "2026.11.26",
     "breakfast": [
@@ -68,15 +50,34 @@
   "2026-11-30": {
     "date": "2026.11.30",
     "breakfast": null,
-    "lunch": null,
+    "lunch": [
+      "정식(4000)",
+      "소불고기덮밥(beef included)",
+      "슈프림닭강정(chicken included)"
+    ],
     "dinner": null,
     "weekday": 0
   },
   "2026-12-01": {
     "date": "2026.12.01",
     "breakfast": null,
-    "lunch": null,
+    "lunch": [
+      "정식(4000)",
+      "삼겹살김치볶음밥(pork included)",
+      "꼬치어묵탕"
+    ],
     "dinner": null,
     "weekday": 1
+  },
+  "2026-12-02": {
+    "date": "2026.12.02",
+    "breakfast": null,
+    "lunch": [
+      "정식(4000)",
+      "부대찌개&라면사리(pork included)",
+      "멘츠카츠(pork included)"
+    ],
+    "dinner": null,
+    "weekday": 2
   }
 }
